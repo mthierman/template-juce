@@ -10,16 +10,20 @@ Processor::Processor()
                          .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
                          ),
-      m_parameters{
-          *this,
-          nullptr,
-          juce::Identifier("JuceWebView"),
-          {std::make_unique<juce::AudioParameterFloat>(
-               "gain", "Gain", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f),
-           std::make_unique<juce::AudioParameterBool>("invertPhase", "Invert Phase", false)}}
+      m_parameters{*this,
+                   nullptr,
+                   juce::Identifier("JuceWebView"),
+                   {std::make_unique<juce::AudioParameterFloat>(
+                        m_parameterMap.at(Parameters::gain).first,
+                        m_parameterMap.at(Parameters::gain).second,
+                        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f),
+                    std::make_unique<juce::AudioParameterBool>(
+                        m_parameterMap.at(Parameters::invertPhase).first,
+                        m_parameterMap.at(Parameters::invertPhase).second, false)}}
 {
-    m_phaseParameter = m_parameters.getRawParameterValue("invertPhase");
-    m_gainParameter = m_parameters.getRawParameterValue("gain");
+    m_gainParameter = m_parameters.getRawParameterValue(m_parameterMap.at(Parameters::gain).first);
+    m_phaseParameter =
+        m_parameters.getRawParameterValue(m_parameterMap.at(Parameters::invertPhase).first);
 }
 
 Processor::~Processor() {}

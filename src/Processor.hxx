@@ -1,6 +1,14 @@
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
+#include <utility>
+#include <map>
+
+enum class Parameters
+{
+    gain,
+    invertPhase
+};
 
 struct Processor final : public juce::AudioProcessor
 {
@@ -34,8 +42,10 @@ struct Processor final : public juce::AudioProcessor
     auto getStateInformation(juce::MemoryBlock& destData) -> void override;
     auto setStateInformation(const void* data, int sizeInBytes) -> void override;
 
+    std::map<Parameters, std::pair<std::string, std::string>> m_parameterMap{
+        {Parameters::gain, std::make_pair("gain", "Gain")},
+        {Parameters::invertPhase, std::make_pair("invertPhase", "Invert Phase")}};
     juce::AudioProcessorValueTreeState m_parameters;
-
     float m_previousGain;
     std::atomic<float>* m_phaseParameter{nullptr};
     std::atomic<float>* m_gainParameter{nullptr};
