@@ -36,10 +36,6 @@ struct Processor final : public juce::AudioProcessor
 
     juce::AudioProcessorValueTreeState m_parameters;
 
-    // juce::AudioParameterFloat* gain;
-    // float previousGain;
-    // juce::AudioParameterBool* invertPhase;
-
     float m_previousGain;
     std::atomic<float>* m_phaseParameter{nullptr};
     std::atomic<float>* m_gainParameter{nullptr};

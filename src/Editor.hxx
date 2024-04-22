@@ -12,7 +12,6 @@ struct Editor final : public juce::AudioProcessorEditor
 
   private:
     Processor& m_processor;
-    // juce::AudioProcessorValueTreeState& m_state;
 
     juce::WebSliderRelay m_sliderRelay{m_browser, "gain"};
 

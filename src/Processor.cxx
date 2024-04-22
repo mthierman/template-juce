@@ -18,10 +18,6 @@ Processor::Processor()
                "gain", "Gain", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f),
            std::make_unique<juce::AudioParameterBool>("invertPhase", "Invert Phase", false)}}
 {
-    // addParameter(gain = new juce::AudioParameterFloat(
-    //                  "gain", "Gain", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    // addParameter(invertPhase = new juce::AudioParameterBool("invertPhase", "Invert Phase",
-    // false));
     m_phaseParameter = m_parameters.getRawParameterValue("invertPhase");
     m_gainParameter = m_parameters.getRawParameterValue("gain");
 }
@@ -79,8 +75,6 @@ auto Processor::changeProgramName(int index, const juce::String& newName) -> voi
 auto Processor::prepareToPlay(double sampleRate, int samplesPerBlock) -> void
 {
     juce::ignoreUnused(sampleRate, samplesPerBlock);
-    // auto phase{*invertPhase ? -1.0f : 1.0f};
-    // previousGain = *gain * phase;
     auto phase{*m_phaseParameter < 0.5f ? 1.0f : -1.0f};
     m_previousGain = *m_gainParameter * phase;
 }
@@ -121,16 +115,6 @@ auto Processor::processBlock(juce::AudioBuffer<float>& buffer,
 
         juce::ignoreUnused(channelData);
 
-        // auto phase{*invertPhase ? -1.0f : 1.0f};
-        // auto currentGain{*gain * phase};
-
-        // if (juce::approximatelyEqual(currentGain, previousGain)) { buffer.applyGain(currentGain);
-        // } else
-        // {
-        //     buffer.applyGainRamp(0, buffer.getNumSamples(), previousGain, currentGain);
-        //     previousGain = currentGain;
-        // }
-
         auto phase{*m_phaseParameter < 0.5f ? 1.0f : -1.0f};
         auto currentGain{*m_gainParameter * phase};
 
@@ -152,12 +136,6 @@ auto Processor::createEditor() -> juce::AudioProcessorEditor* { return new Edito
 
 auto Processor::getStateInformation(juce::MemoryBlock& destData) -> void
 {
-    // auto xml{std::make_unique<juce::XmlElement>("JuceWebView")};
-
-    // xml->setAttribute("gain", (double)*gain);
-    // xml->setAttribute("invertPhase", *invertPhase);
-    // copyXmlToBinary(*xml, destData);
-
     auto state{m_parameters.copyState()};
     auto xml{state.createXml()};
     copyXmlToBinary(*xml, destData);
@@ -165,17 +143,6 @@ auto Processor::getStateInformation(juce::MemoryBlock& destData) -> void
 
 auto Processor::setStateInformation(const void* data, int sizeInBytes) -> void
 {
-    // auto xmlState{getXmlFromBinary(data, sizeInBytes)};
-
-    // if (xmlState.get() != nullptr)
-    // {
-    //     if (xmlState->hasTagName("JuceWebView"))
-    //     {
-    //         *gain = (float)xmlState->getDoubleAttribute("gain", 1.0);
-    //         *invertPhase = xmlState->getBoolAttribute("inverPhase", false);
-    //     }
-    // }
-
     auto xmlState{getXmlFromBinary(data, sizeInBytes)};
 
     if (xmlState.get() != nullptr)
