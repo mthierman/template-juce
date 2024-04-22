@@ -1,0 +1,148 @@
+cmake_minimum_required(VERSION 3.28)
+
+project(
+    JuceWebView
+    VERSION 0.0.1
+)
+
+option(
+    JUCE_RESTORE_NUGET
+    "Restore Nuget packages"
+    ON
+)
+
+include(FetchContent)
+
+FetchContent_Declare(
+    juce
+    URL https://github.com/juce-framework/JUCE/archive/refs/heads/juce8.zip
+)
+
+FetchContent_MakeAvailable(juce)
+
+if(JUCE_RESTORE_NUGET)
+    execute_process(
+        COMMAND nuget restore -PackagesDirectory "${CMAKE_BINARY_DIR}/_deps/Nuget"
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+    )
+
+    cmake_path(
+        SET
+        JUCE_WEBVIEW2_PACKAGE_LOCATION
+        "${CMAKE_BINARY_DIR}/_deps/Nuget"
+    )
+endif()
+
+set(GUI_SOURCES
+    ${PROJECT_SOURCE_DIR}/gui/index.html
+    ${PROJECT_SOURCE_DIR}/gui/css/index.css
+    ${PROJECT_SOURCE_DIR}/gui/index.ts
+    ${PROJECT_SOURCE_DIR}/gui/public/favicon.ico
+    ${PROJECT_SOURCE_DIR}/gui/public/logo_dark.png
+    ${PROJECT_SOURCE_DIR}/gui/public/logo_light.png
+)
+
+set(GUI_OUTPUT
+    ${PROJECT_BINARY_DIR}/gui/index.html
+    ${PROJECT_BINARY_DIR}/gui/index.css
+    ${PROJECT_BINARY_DIR}/gui/index.js
+    ${PROJECT_BINARY_DIR}/gui/favicon.ico
+    ${PROJECT_BINARY_DIR}/gui/logo_dark.png
+    ${PROJECT_BINARY_DIR}/gui/logo_light.png
+)
+
+add_custom_command(
+    OUTPUT ${GUI_OUTPUT}
+    COMMAND npm run build
+    DEPENDS ${GUI_SOURCES}
+)
+
+add_custom_target(
+    Vite
+    ALL
+    DEPENDS ${GUI_OUTPUT}
+)
+
+juce_add_binary_data(
+    BinaryData
+    HEADER_NAME
+    "BinaryData.h"
+    NAMESPACE
+    "BinaryData"
+    SOURCES
+    ${GUI_OUTPUT}
+)
+
+juce_add_plugin(
+    ${PROJECT_NAME}
+    ICON_BIG
+    ${PROJECT_SOURCE_DIR}/gui/public/icon.png
+    ICON_SMALL
+    ${PROJECT_SOURCE_DIR}/gui/public/icon.png
+    PRODUCT_NAME
+    ${PROJECT_NAME}
+    COMPANY_NAME
+    ${PROJECT_NAME}
+    PLUGIN_MANUFACTURER_CODE
+    Wvap
+    PLUGIN_CODE
+    Wvap
+    FORMATS
+    AU
+    VST3
+    Standalone
+    IS_SYNTH
+    FALSE
+    NEEDS_MIDI_INPUT
+    FALSE
+    NEEDS_MIDI_OUTPUT
+    FALSE
+    IS_MIDI_EFFECT
+    FALSE
+    EDITOR_WANTS_KEYBOARD_FOCUS
+    TRUE
+    COPY_PLUGIN_AFTER_BUILD
+    FALSE
+    NEEDS_WEBVIEW2
+    TRUE
+)
+
+target_compile_features(
+    ${PROJECT_NAME}
+    PRIVATE cxx_std_23
+)
+
+target_sources(
+    ${PROJECT_NAME}
+    PRIVATE src/Editor.cxx
+            src/Processor.cxx
+)
+
+target_compile_definitions(
+    ${PROJECT_NAME}
+    PUBLIC JUCE_WEB_BROWSER=1
+           JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
+           JUCE_USE_CURL=0
+           JUCE_VST3_CAN_REPLACE_VST2=0
+           $<$<CONFIG:Debug>:HOT_RELOAD=1>
+)
+
+target_link_libraries(
+    ${PROJECT_NAME}
+    PRIVATE BinaryData
+            juce::juce_audio_utils
+            juce::juce_gui_extra
+    PUBLIC juce::juce_recommended_config_flags
+           juce::juce_recommended_lto_flags
+           juce::juce_recommended_warning_flags
+)
+
+target_compile_definitions(
+    ${PROJECT_NAME}
+    PRIVATE _SILENCE_CXX23_ALIGNED_STORAGE_DEPRECATION_WARNING
+)
+
+add_dependencies(
+    BinaryData
+    Vite
+)
