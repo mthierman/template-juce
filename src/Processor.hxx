@@ -1,14 +1,10 @@
 #pragma once
 
+#include "Global.hxx"
+
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <utility>
 #include <map>
-
-enum class Parameters
-{
-    gain,
-    invertPhase
-};
 
 struct Processor final : public juce::AudioProcessor
 {

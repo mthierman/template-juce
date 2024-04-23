@@ -13,7 +13,8 @@ struct Editor final : public juce::AudioProcessorEditor
   private:
     Processor& m_processor;
 
-    juce::WebSliderRelay m_sliderRelay{m_browser, "gain"};
+    juce::WebSliderRelay m_gainRelay{m_browser, "gain"};
+    juce::WebToggleButtonRelay m_phaseRelay{m_browser, "invertPhase"};
 
     juce::WebBrowserComponent m_browser{
         juce::WebBrowserComponent::Options{}
@@ -22,9 +23,11 @@ struct Editor final : public juce::AudioProcessorEditor
                 juce::WebBrowserComponent::Options::WinWebView2{}.withUserDataFolder(
                     juce::File::getSpecialLocation(juce::File::SpecialLocationType::tempDirectory)))
             .withNativeIntegrationEnabled()
-            .withOptionsFrom(m_sliderRelay)};
+            .withOptionsFrom(m_gainRelay)
+            .withOptionsFrom(m_phaseRelay)};
 
-    juce::WebSliderParameterAttachment m_sliderAttachment;
+    juce::WebSliderParameterAttachment m_gainAttachment;
+    juce::WebToggleButtonParameterAttachment m_phaseAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Editor)
 };
