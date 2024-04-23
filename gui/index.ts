@@ -5,14 +5,21 @@ import * as Juce from "juce-framework-frontend";
 
 console.log(Juce.getSliderState("gain"));
 
-const sliderState = Juce.getSliderState("gain");
+const gainState = Juce.getSliderState("gain");
+const phaseState = Juce.getToggleState("invertPhase");
 
 const gainSlider = document.getElementById("gain-slider") as HTMLInputElement;
+const phaseButton = document.getElementById("invert-phase-button") as HTMLInputElement;
 
 gainSlider.addEventListener("input", (e: Event) => {
     const target = e.target as HTMLInputElement;
-    sliderState.setNormalisedValue(target.value);
-    console.log(Juce.getSliderState("gain"));
+    gainState.setNormalisedValue(target.value);
+    console.log(gainState);
+});
+
+phaseButton.addEventListener("click", () => {
+    phaseState.setValue(true);
+    console.log(phaseState);
 });
 
 // type GainValueCallback = (sliderValue: string) => number;
