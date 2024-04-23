@@ -28,6 +28,8 @@ main {
     gap: 0.5em;
     place-content: center;
     text-align: center;
+    line-height: 1;
+    /* place-items: center; */
 }
 
 h1 {
@@ -71,6 +73,24 @@ input[type="range"]::-webkit-slider-thumb {
     height: 1em;
     width: 1em;
     border-radius: 1em;
+}
+
+button {
+    appearance: none;
+    background-color: white;
+    color: blue;
+    border: none;
+    border-radius: 2em;
+    width: fit-content;
+    margin: 0;
+    padding: 0.5em;
+    place-self: center;
+}
+
+button:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
