@@ -42,7 +42,7 @@ struct Processor final : public juce::AudioProcessor
         {Parameters::gain, std::make_pair("gain", "Gain")},
         {Parameters::invertPhase, std::make_pair("invertPhase", "Invert Phase")}};
     juce::AudioProcessorValueTreeState m_parameters;
-    float m_previousGain;
+    float m_previousGain{};
     std::atomic<float>* m_phaseParameter{nullptr};
     std::atomic<float>* m_gainParameter{nullptr};
 
