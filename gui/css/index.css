@@ -101,7 +101,7 @@ button:hover {
         background-color: black;
     }
 
-    input[type="range"]::-webkit-slider-thumb:hover {
+    input[type="range"]:hover::-webkit-slider-thumb {
         background-color: royalblue;
     }
 
@@ -128,7 +128,7 @@ button:hover {
         background-color: white;
     }
 
-    input[type="range"]::-webkit-slider-thumb:hover {
+    input[type="range"]:hover::-webkit-slider-thumb {
         background-color: cornflowerblue;
     }
 
