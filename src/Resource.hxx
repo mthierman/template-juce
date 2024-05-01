@@ -20,10 +20,10 @@ Resource::Resource(std::string path, std::string resourceName) : m_path{path}
     auto namedResource{BinaryData::getNamedResource(resourceName.c_str(), dataSize)};
 
     std::vector<std::byte> binaryData(dataSize);
-
     std::memcpy(binaryData.data(), namedResource, dataSize);
 
-    m_resource = juce::WebBrowserComponent::Resource{binaryData, mimeType(resourceName)};
+    m_resource = juce::WebBrowserComponent::Resource{
+        binaryData, mimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.c_str()))};
 }
 
 auto Resource::mimeType(std::string filename) -> std::string

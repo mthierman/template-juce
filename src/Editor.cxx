@@ -44,7 +44,7 @@ auto Editor::getResource(const juce::String& url)
 
     // std::vector<Resource> resources;
 
-    // resources.emplace_back(Resource("/index.html", "index_html"));
+    // resources.emplace_back(Resource("/", "index_html"));
     // resources.emplace_back(Resource("/assets/index.css", "index_css"));
     // resources.emplace_back(Resource("/assets/index.js", "index_js"));
     // resources.emplace_back(Resource("/logo_dark.png", "logo_dark_png"));
@@ -63,7 +63,7 @@ auto Editor::getResource(const juce::String& url)
     if (urlToRetrieve == "index.html")
     {
         DBG("index.html");
-        return Resource("index.html", "index_html").m_resource;
+        return Resource("/", "index_html").m_resource;
     }
 
     return std::nullopt;
