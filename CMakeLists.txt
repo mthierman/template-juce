@@ -22,6 +22,15 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(juce)
 
+# FetchContent_Declare(
+#     mimesniff
+#     GIT_REPOSITORY https://github.com/ada-url/mimesniff.git
+#     GIT_TAG main
+#     GIT_SHALLOW ON
+# )
+
+# FetchContent_MakeAvailable(mimesniff)
+
 if(JUCE_RESTORE_NUGET)
     execute_process(
         COMMAND nuget restore -PackagesDirectory "${CMAKE_BINARY_DIR}/_deps/Nuget"

@@ -10,6 +10,8 @@ struct Editor final : public juce::AudioProcessorEditor
     auto paint(juce::Graphics&) -> void override;
     auto resized() -> void override;
 
+    auto getResource(const juce::String& url) -> std::optional<juce::WebBrowserComponent::Resource>;
+
   private:
     Processor& m_processor;
 
@@ -24,7 +26,9 @@ struct Editor final : public juce::AudioProcessorEditor
                     juce::File::getSpecialLocation(juce::File::SpecialLocationType::tempDirectory)))
             .withNativeIntegrationEnabled()
             .withOptionsFrom(m_gainRelay)
-            .withOptionsFrom(m_phaseRelay)};
+            .withOptionsFrom(m_phaseRelay)
+            .withResourceProvider([this](const auto& url) { return getResource(url); },
+                                  juce::URL{"http://localhost:5173/"}.getOrigin())};
 
     juce::WebSliderParameterAttachment m_gainAttachment;
     juce::WebToggleButtonParameterAttachment m_phaseAttachment;
