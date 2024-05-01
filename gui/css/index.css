@@ -77,8 +77,6 @@ input[type="range"]::-webkit-slider-thumb {
 
 button {
     appearance: none;
-    background-color: white;
-    color: blue;
     border: none;
     border-radius: 2em;
     width: fit-content;
@@ -88,14 +86,12 @@ button {
 }
 
 button:hover {
-    background-color: blue;
-    color: white;
     cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: midnightblue;
+        background-color: darkblue;
     }
 
     input[type="range"]::-webkit-slider-runnable-track {
@@ -103,12 +99,20 @@ button:hover {
     }
 
     input[type="range"]::-webkit-slider-thumb {
-        background-color: midnightblue;
+        background-color: black;
     }
 
-    input[type="range"]:focus::-webkit-slider-thumb {
-        border: 2px solid white;
-        outline: 2px solid midnightblue;
+    input[type="range"]::-webkit-slider-thumb:hover {
+        background-color: dodgerblue;
+    }
+
+    button {
+        background-color: white;
+        color: black;
+    }
+
+    button:hover {
+        color: dodgerblue;
     }
 }
 
@@ -122,11 +126,19 @@ button:hover {
     }
 
     input[type="range"]::-webkit-slider-thumb {
+        background-color: white;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
         background-color: dodgerblue;
     }
 
-    input[type="range"]:focus::-webkit-slider-thumb {
-        border: 2px solid black;
-        outline: 2px solid dodgerblue;
+    button {
+        background-color: black;
+        color: white;
+    }
+
+    button:hover {
+        color: dodgerblue;
     }
 }

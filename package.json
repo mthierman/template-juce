@@ -12,7 +12,7 @@
         "cmake": "cmake -S . -B build && cmake --build build"
     },
     "dependencies": {
-        "juce-framework-frontend": "file:gui\\juce"
+        "juce-framework-frontend": "file:build\\_deps\\juce-src\\modules\\juce_gui_extra\\native\\javascript"
     },
     "devDependencies": {
         "@types/node": "^20.12.7",

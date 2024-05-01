@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       juce-framework-frontend:
-        specifier: file:gui\juce
-        version: file:gui/juce
+        specifier: file:build\_deps\juce-src\modules\juce_gui_extra\native\javascript
+        version: file:build/_deps/juce-src/modules/juce_gui_extra/native/javascript
     devDependencies:
       '@types/node':
         specifier: ^20.12.7
@@ -605,8 +605,8 @@ packages:
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
 
-  juce-framework-frontend@file:gui/juce:
-    resolution: {directory: gui/juce, type: directory}
+  juce-framework-frontend@file:build/_deps/juce-src/modules/juce_gui_extra/native/javascript:
+    resolution: {directory: build/_deps/juce-src/modules/juce_gui_extra/native/javascript, type: directory}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -1362,7 +1362,7 @@ snapshots:
 
   json-stable-stringify-without-jsonify@1.0.1: {}
 
-  juce-framework-frontend@file:gui/juce: {}
+  juce-framework-frontend@file:build/_deps/juce-src/modules/juce_gui_extra/native/javascript: {}
 
   keyv@4.5.4:
     dependencies:
