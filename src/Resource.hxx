@@ -8,7 +8,7 @@ struct Resource
     Resource() = default;
     Resource(std::string path, std::string resourceName);
 
-    auto mimeType(std::string filename) -> std::string;
+    auto mimeType(std::string_view filename) -> std::string;
 
     std::string m_path;
     juce::WebBrowserComponent::Resource m_resource;
@@ -26,7 +26,7 @@ Resource::Resource(std::string path, std::string resourceName) : m_path{path}
         binaryData, mimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.c_str()))};
 }
 
-auto Resource::mimeType(std::string filename) -> std::string
+auto Resource::mimeType(std::string_view filename) -> std::string
 {
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
 
