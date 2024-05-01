@@ -22,14 +22,14 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(juce)
 
-# FetchContent_Declare(
-#     mimesniff
-#     GIT_REPOSITORY https://github.com/ada-url/mimesniff.git
-#     GIT_TAG main
-#     GIT_SHALLOW ON
-# )
+FetchContent_Declare(
+    fontaudio
+    GIT_REPOSITORY https://github.com/fefanto/fontaudio.git
+    GIT_TAG master
+    GIT_SHALLOW ON
+)
 
-# FetchContent_MakeAvailable(mimesniff)
+FetchContent_MakeAvailable(fontaudio)
 
 if(JUCE_RESTORE_NUGET)
     execute_process(
