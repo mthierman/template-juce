@@ -15,9 +15,14 @@ Editor::Editor(Processor& processor)
     addAndMakeVisible(m_browser);
 
 #if defined(HOT_RELOAD)
+    // Dev URL
+    m_browser.goToURL("http://localhost:5173/");
+
+    // Preview URL
+    // m_browser.goToURL("http://localhost:4173/");
+
+    // ResourceProvider
     // m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
-    m_browser.goToURL("http://localhost:4173/");
-    // m_browser.goToURL("http://localhost:5173/");
 #else
     m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
 #endif

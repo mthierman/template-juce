@@ -31,7 +31,7 @@ export default function InvertPhaseToggle() {
                 checked={phase}
                 onChange={handleInvertPhaseChange}
             />
-            <img src={phase_toggle} />
+            <img src={phase_toggle} draggable={false} />
         </label>
     );
 }
