@@ -9,7 +9,7 @@ Resource::Resource(const juce::String& resourceName)
     int dataSize{};
     auto namedResource{BinaryData::getNamedResource(resourceName.toUTF8(), dataSize)};
 
-    data.reserve(dataSize);
+    data.resize(dataSize);
     std::memcpy(data.data(), namedResource, dataSize);
 
     mimeType = getMimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.toUTF8()));
