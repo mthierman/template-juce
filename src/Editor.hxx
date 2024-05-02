@@ -12,7 +12,7 @@ struct Editor final : public juce::AudioProcessorEditor
     auto paint(juce::Graphics&) -> void override;
     auto resized() -> void override;
 
-    auto addResource(const juce::String& route, const juce::String& resourceName) -> void;
+    // auto addResource(const juce::String& route, const juce::String& resourceName) -> void;
     auto getResource(const juce::String& url) -> std::optional<juce::WebBrowserComponent::Resource>;
 
   private:
@@ -21,7 +21,14 @@ struct Editor final : public juce::AudioProcessorEditor
     juce::WebSliderRelay m_gainRelay{m_browser, "gain"};
     juce::WebToggleButtonRelay m_phaseRelay{m_browser, "invertPhase"};
 
-    std::unordered_map<juce::String, Resource> m_resources;
+    std::unordered_map<juce::String, Resource> m_resources{
+        {"/index.html", Resource("index_html")},
+        {"/index.css", Resource("index_css")},
+        {"/index.js", Resource("index_js")},
+        {"/favicon.ico", Resource("favicon_ico")},
+        {"/logo_dark.png", Resource("logo_dark_png")},
+        {"/logo_light.png", Resource("logo_light_png")},
+    };
 
     Browser m_browser{
         juce::WebBrowserComponent::Options{}
