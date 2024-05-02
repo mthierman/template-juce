@@ -24,13 +24,7 @@ const userConfig: UserConfig = {
     },
 };
 
-const commonServerOptions: CommonServerOptions = {
-    port: 8000,
-    https: {
-        pfx: resolve("../.cert/localhost.pfx"),
-        passphrase: "localhost",
-    },
-};
+const commonServerOptions: CommonServerOptions = {};
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {

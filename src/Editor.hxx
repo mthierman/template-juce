@@ -24,11 +24,12 @@ struct Editor final : public juce::AudioProcessorEditor
 
     std::unordered_map<juce::String, Resource> m_resources{
         {"/index.html", Resource("index_html")},
-        {"/index.css", Resource("index_css")},
         {"/index.js", Resource("index_js")},
+        {"/index.css", Resource("index_css")},
         {"/favicon.ico", Resource("favicon_ico")},
-        {"/logo_dark.png", Resource("logo_dark_png")},
-        {"/logo_light.png", Resource("logo_light_png")},
+        {"/logo_dark.svg", Resource("logo_dark_svg")},
+        {"/logo_light.svg", Resource("logo_light_svg")},
+        {"/phase.svg", Resource("phase_svg")},
     };
 
     Browser m_browser{

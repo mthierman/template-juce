@@ -22,15 +22,6 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(juce)
 
-FetchContent_Declare(
-    fontaudio
-    GIT_REPOSITORY "https://github.com/fefanto/fontaudio.git"
-    GIT_TAG master
-    GIT_SHALLOW ON
-)
-
-FetchContent_MakeAvailable(fontaudio)
-
 if(RESTORE_NUGET)
     execute_process(
         COMMAND nuget restore -PackagesDirectory "${CMAKE_BINARY_DIR}/_deps/Nuget"
@@ -46,11 +37,13 @@ endif()
 
 set(GUI_SOURCES
     "${PROJECT_SOURCE_DIR}/gui/index.html"
+    "${PROJECT_SOURCE_DIR}/gui/index.tsx"
+    "${PROJECT_SOURCE_DIR}/gui/App.tsx"
     "${PROJECT_SOURCE_DIR}/gui/css/index.css"
-    "${PROJECT_SOURCE_DIR}/gui/index.ts"
     "${PROJECT_SOURCE_DIR}/gui/public/favicon.ico"
-    "${PROJECT_SOURCE_DIR}/gui/public/logo_dark.png"
-    "${PROJECT_SOURCE_DIR}/gui/public/logo_light.png"
+    "${PROJECT_SOURCE_DIR}/gui/public/logo_dark.svg"
+    "${PROJECT_SOURCE_DIR}/gui/public/logo_light.svg"
+    "${PROJECT_SOURCE_DIR}/gui/public/phase.svg"
 )
 
 set(GUI_OUTPUT
@@ -58,8 +51,9 @@ set(GUI_OUTPUT
     "${PROJECT_BINARY_DIR}/gui/index.css"
     "${PROJECT_BINARY_DIR}/gui/index.js"
     "${PROJECT_BINARY_DIR}/gui/favicon.ico"
-    "${PROJECT_BINARY_DIR}/gui/logo_dark.png"
-    "${PROJECT_BINARY_DIR}/gui/logo_light.png"
+    "${PROJECT_BINARY_DIR}/gui/logo_dark.svg"
+    "${PROJECT_BINARY_DIR}/gui/logo_light.svg"
+    "${PROJECT_BINARY_DIR}/gui/phase.svg"
 )
 
 add_custom_command(

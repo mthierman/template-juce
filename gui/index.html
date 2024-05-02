@@ -6,25 +6,9 @@
         <meta name="color-scheme" content="light dark" />
         <link rel="icon" href="/favicon.ico" />
         <title>WebViewAudioPlugin</title>
-        <script type="module" src="index.ts"></script>
+        <script type="module" src="index.tsx"></script>
     </head>
     <body>
-        <main>
-            <picture draggable="false">
-                <source media="(prefers-color-scheme: dark)" srcset="/logo_dark.svg" />
-                <source media="(prefers-color-scheme: light)" srcset="/logo_light.svg" />
-                <img draggable="false" src="/logo_dark.svg" alt="logo" width="350" height="auto" />
-            </picture>
-
-            <div id="inputs">
-                <label id="gain">
-                    <span id="gain-slider-value">-20.0 dB</span>
-                    <input id="gain-slider" type="range" min="0" max="1" value="0" step="0.01" />
-                </label>
-
-                <input type="checkbox" id="invert-phase-toggle" />
-                <label for="invert-phase-toggle"></label>
-            </div>
-        </main>
+        <div id="root"></div>
     </body>
 </html>
