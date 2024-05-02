@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Processor.hxx"
+#include "Resource.hxx"
 
 struct Editor final : public juce::AudioProcessorEditor
 {
@@ -17,6 +18,8 @@ struct Editor final : public juce::AudioProcessorEditor
 
     juce::WebSliderRelay m_gainRelay{m_browser, "gain"};
     juce::WebToggleButtonRelay m_phaseRelay{m_browser, "invertPhase"};
+
+    std::vector<Resource> m_resources;
 
     juce::WebBrowserComponent m_browser{
         juce::WebBrowserComponent::Options{}

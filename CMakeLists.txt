@@ -15,7 +15,7 @@ include(FetchContent)
 
 FetchContent_Declare(
     juce
-    GIT_REPOSITORY https://github.com/juce-framework/JUCE.git
+    GIT_REPOSITORY "https://github.com/juce-framework/JUCE.git"
     GIT_TAG juce8
     GIT_SHALLOW ON
 )
@@ -24,7 +24,7 @@ FetchContent_MakeAvailable(juce)
 
 FetchContent_Declare(
     fontaudio
-    GIT_REPOSITORY https://github.com/fefanto/fontaudio.git
+    GIT_REPOSITORY "https://github.com/fefanto/fontaudio.git"
     GIT_TAG master
     GIT_SHALLOW ON
 )
@@ -34,7 +34,7 @@ FetchContent_MakeAvailable(fontaudio)
 if(JUCE_RESTORE_NUGET)
     execute_process(
         COMMAND nuget restore -PackagesDirectory "${CMAKE_BINARY_DIR}/_deps/Nuget"
-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
     )
 
     cmake_path(
@@ -45,21 +45,21 @@ if(JUCE_RESTORE_NUGET)
 endif()
 
 set(GUI_SOURCES
-    ${PROJECT_SOURCE_DIR}/gui/index.html
-    ${PROJECT_SOURCE_DIR}/gui/css/index.css
-    ${PROJECT_SOURCE_DIR}/gui/index.ts
-    ${PROJECT_SOURCE_DIR}/gui/public/favicon.ico
-    ${PROJECT_SOURCE_DIR}/gui/public/logo_dark.png
-    ${PROJECT_SOURCE_DIR}/gui/public/logo_light.png
+    "${PROJECT_SOURCE_DIR}/gui/index.html"
+    "${PROJECT_SOURCE_DIR}/gui/css/index.css"
+    "${PROJECT_SOURCE_DIR}/gui/index.ts"
+    "${PROJECT_SOURCE_DIR}/gui/public/favicon.ico"
+    "${PROJECT_SOURCE_DIR}/gui/public/logo_dark.png"
+    "${PROJECT_SOURCE_DIR}/gui/public/logo_light.png"
 )
 
 set(GUI_OUTPUT
-    ${PROJECT_BINARY_DIR}/gui/index.html
-    ${PROJECT_BINARY_DIR}/gui/index.css
-    ${PROJECT_BINARY_DIR}/gui/index.js
-    ${PROJECT_BINARY_DIR}/gui/favicon.ico
-    ${PROJECT_BINARY_DIR}/gui/logo_dark.png
-    ${PROJECT_BINARY_DIR}/gui/logo_light.png
+    "${PROJECT_BINARY_DIR}/gui/index.html"
+    "${PROJECT_BINARY_DIR}/gui/index.css"
+    "${PROJECT_BINARY_DIR}/gui/index.js"
+    "${PROJECT_BINARY_DIR}/gui/favicon.ico"
+    "${PROJECT_BINARY_DIR}/gui/logo_dark.png"
+    "${PROJECT_BINARY_DIR}/gui/logo_light.png"
 )
 
 add_custom_command(
@@ -87,9 +87,9 @@ juce_add_binary_data(
 juce_add_plugin(
     ${PROJECT_NAME}
     ICON_BIG
-    ${PROJECT_SOURCE_DIR}/gui/public/icon.png
+    "${PROJECT_SOURCE_DIR}/gui/public/icon.png"
     ICON_SMALL
-    ${PROJECT_SOURCE_DIR}/gui/public/icon.png
+    "${PROJECT_SOURCE_DIR}/gui/public/icon.png"
     PRODUCT_NAME
     ${PROJECT_NAME}
     COMPANY_NAME
@@ -125,8 +125,18 @@ target_compile_features(
 
 target_sources(
     ${PROJECT_NAME}
-    PRIVATE src/Editor.cxx
-            src/Processor.cxx
+    PRIVATE "${PROJECT_SOURCE_DIR}/src/Editor.cxx"
+            "${PROJECT_SOURCE_DIR}/src/Processor.cxx"
+            "${PROJECT_SOURCE_DIR}/src/Resource.cxx"
+    PRIVATE FILE_SET
+            HEADERS
+            BASE_DIRS
+            "${PROJECT_SOURCE_DIR}/src"
+            FILES
+            "${PROJECT_SOURCE_DIR}/src/Editor.hxx"
+            "${PROJECT_SOURCE_DIR}/src/Global.hxx"
+            "${PROJECT_SOURCE_DIR}/src/Processor.hxx"
+            "${PROJECT_SOURCE_DIR}/src/Resource.hxx"
 )
 
 target_compile_definitions(

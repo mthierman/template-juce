@@ -1,6 +1,5 @@
 #include "Processor.hxx"
 #include "Editor.hxx"
-#include "Resource.hxx"
 
 Editor::Editor(Processor& processor)
     : AudioProcessorEditor{&processor}, m_processor{processor},
@@ -13,6 +12,13 @@ Editor::Editor(Processor& processor)
 {
     juce::ignoreUnused(m_processor);
     addAndMakeVisible(m_browser);
+
+    m_resources.emplace_back(Resource("index.html", "index_html"));
+    m_resources.emplace_back(Resource("index.css", "index_css"));
+    m_resources.emplace_back(Resource("index.js", "index_js"));
+    m_resources.emplace_back(Resource("logo_dark.png", "logo_dark_png"));
+    m_resources.emplace_back(Resource("logo_light.png", "logo_light_png"));
+    m_resources.emplace_back(Resource("favicon.ico", "favicon_ico"));
 
 #if defined(HOT_RELOAD)
     m_browser.goToURL("http://localhost:5173/");
@@ -41,16 +47,7 @@ auto Editor::getResource(const juce::String& url)
     const auto urlToRetrieve =
         url == "/" ? juce::String{"index.html"} : url.fromFirstOccurrenceOf("/", false, false);
 
-    std::vector<Resource> resources;
-
-    resources.emplace_back(Resource("index.html", "index_html"));
-    resources.emplace_back(Resource("index.css", "index_css"));
-    resources.emplace_back(Resource("index.js", "index_js"));
-    resources.emplace_back(Resource("logo_dark.png", "logo_dark_png"));
-    resources.emplace_back(Resource("logo_light.png", "logo_light_png"));
-    resources.emplace_back(Resource("favicon.ico", "favicon_ico"));
-
-    for (const auto& res : resources)
+    for (const auto& res : m_resources)
     {
         if (urlToRetrieve == res.m_path.c_str()) { return res.m_resource; }
     }
