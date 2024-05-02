@@ -11,5 +11,4 @@ struct Resource : juce::WebBrowserComponent::Resource
                      juce::String defaultMimeType = "application/octet-stream") -> juce::String;
 
     juce::String m_route;
-    // juce::WebBrowserComponent::Resource m_resource;
 };
