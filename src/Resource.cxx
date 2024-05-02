@@ -12,11 +12,11 @@ Resource::Resource(std::string route, std::string resourceName) : m_route{route}
     std::vector<std::byte> binaryData(dataSize);
     std::memcpy(binaryData.data(), namedResource, dataSize);
 
-    m_resource = juce::WebBrowserComponent::Resource{
-        binaryData, mimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.c_str()))};
+    data = binaryData;
+    mimeType = getMimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.c_str()));
 }
 
-auto Resource::mimeType(std::string filename, std::string defaultMimeType) -> std::string
+auto Resource::getMimeType(std::string filename, std::string defaultMimeType) -> std::string
 {
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
 
