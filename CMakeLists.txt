@@ -53,7 +53,7 @@ set(GUI_OUTPUT
 
 add_custom_command(
     OUTPUT ${GUI_OUTPUT}
-    COMMAND npm run build
+    COMMAND pnpm run build
     DEPENDS ${GUI_SOURCES}
 )
 
