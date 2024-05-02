@@ -55,18 +55,18 @@ const changeTheme = (theme: string) => {
 };
 
 export default function App() {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("dark");
 
     // setTheme("light");
 
     useEffect(() => {
         // setTheme("dark");
         // changeTheme(theme);
-        changeTheme("dark");
+        changeTheme(theme);
     }, []);
 
     return (
-        <main className="size-full bg-blue-50 dark:bg-blue-950">
+        <main>
             <img src={theme === "dark" ? logoSvg.dark : logoSvg.light} draggable={false} />
             <GainSlider />
             <InvertPhaseToggle />
