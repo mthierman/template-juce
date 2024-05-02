@@ -1,8 +1,9 @@
-import { resolve } from "node:path";
-import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import { resolve } from "path";
+import { CommonServerOptions, UserConfig, defineConfig } from "vite";
 
-// https://vitejs.dev/config/
-export default defineConfig({
+const userConfig: UserConfig = {
+    plugins: [react()],
     root: resolve("gui"),
     base: "/",
     build: {
@@ -21,4 +22,30 @@ export default defineConfig({
             css: resolve("gui/css"),
         },
     },
+};
+
+const commonServerOptions: CommonServerOptions = {
+    port: 8000,
+    https: {
+        pfx: resolve("../.cert/localhost.pfx"),
+        passphrase: "localhost",
+    },
+};
+
+// https://vitejs.dev/config/
+export default defineConfig(({ command }) => {
+    switch (command) {
+        case "serve": {
+            return {
+                ...userConfig,
+                server: { ...commonServerOptions },
+                preview: { ...commonServerOptions },
+            };
+        }
+        default: {
+            return {
+                ...userConfig,
+            };
+        }
+    }
 });
