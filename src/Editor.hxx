@@ -19,7 +19,7 @@ struct Editor final : public juce::AudioProcessorEditor
     juce::WebSliderRelay m_gainRelay{m_browser, "gain"};
     juce::WebToggleButtonRelay m_phaseRelay{m_browser, "invertPhase"};
 
-    std::vector<Resource> m_resources;
+    std::unordered_map<juce::String, Resource> m_resources;
 
     juce::WebBrowserComponent m_browser{
         juce::WebBrowserComponent::Options{}

@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <unordered_map>
 
-Resource::Resource(juce::String route, juce::String resourceName) : m_route{route}
+Resource::Resource(juce::String resourceName)
 {
     int dataSize{};
     auto namedResource{BinaryData::getNamedResource(resourceName.toUTF8(), dataSize)};
