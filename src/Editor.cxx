@@ -23,7 +23,7 @@ Editor::Editor(Processor& processor)
 
     setResizable(true, true);
     setResizeLimits(400, 300, 800, 600);
-    setSize(400, 300);
+    setSize(800, 600);
 }
 
 Editor::~Editor() {}
