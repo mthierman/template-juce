@@ -13,12 +13,12 @@ Editor::Editor(Processor& processor)
     juce::ignoreUnused(m_processor);
     addAndMakeVisible(m_browser);
 
-    m_resources.emplace_back(Resource("index.html", "index_html"));
-    m_resources.emplace_back(Resource("index.css", "index_css"));
-    m_resources.emplace_back(Resource("index.js", "index_js"));
-    m_resources.emplace_back(Resource("logo_dark.png", "logo_dark_png"));
-    m_resources.emplace_back(Resource("logo_light.png", "logo_light_png"));
-    m_resources.emplace_back(Resource("favicon.ico", "favicon_ico"));
+    m_resources.emplace_back(Resource("/index.html", "index_html"));
+    m_resources.emplace_back(Resource("/index.css", "index_css"));
+    m_resources.emplace_back(Resource("/index.js", "index_js"));
+    m_resources.emplace_back(Resource("/logo_dark.png", "logo_dark_png"));
+    m_resources.emplace_back(Resource("/logo_light.png", "logo_light_png"));
+    m_resources.emplace_back(Resource("/favicon.ico", "favicon_ico"));
 
 #if defined(HOT_RELOAD)
     // m_browser.goToURL("http://localhost:5173/");
@@ -44,8 +44,7 @@ auto Editor::resized() -> void { m_browser.setBounds(getLocalBounds()); }
 auto Editor::getResource(const juce::String& url)
     -> std::optional<juce::WebBrowserComponent::Resource>
 {
-    const auto urlToRetrieve =
-        url == "/" ? juce::String{"index.html"} : url.fromFirstOccurrenceOf("/", false, false);
+    const auto urlToRetrieve{url == "/" ? juce::String{"/index.html"} : url};
 
     for (const auto& resource : m_resources)
     {
