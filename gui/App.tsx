@@ -1,12 +1,6 @@
+import * as Juce from "juce-framework-frontend";
+
 import "css/index.css";
-
-// import * as Juce from "juce-framework-frontend";
-
-// const gainState = Juce.getSliderState("gain");
-// const phaseState = Juce.getToggleState("invertPhase");
-
-// console.log(gainState);
-// console.log(phaseState);
 
 // const gainSlider = document.getElementById("gain-slider") as HTMLInputElement;
 // const phaseButton = document.getElementById("invert-phase-toggle") as HTMLInputElement;
@@ -28,6 +22,12 @@ import "css/index.css";
 // });
 
 export default function App() {
+    const gainState = Juce.getSliderState("gain");
+    const phaseState = Juce.getToggleState("invertPhase");
+
+    console.log(gainState);
+    console.log(phaseState);
+
     return (
         <main>
             <picture draggable="false">
