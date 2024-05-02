@@ -44,11 +44,11 @@ auto Editor::resized() -> void { m_browser.setBounds(getLocalBounds()); }
 auto Editor::getResource(const juce::String& url)
     -> std::optional<juce::WebBrowserComponent::Resource>
 {
-    const auto urlToRetrieve{url == "/" ? juce::String{"/index.html"} : url};
+    const auto route{url == "/" ? juce::String{"/index.html"} : url};
 
     for (const auto& resource : m_resources)
     {
-        if (urlToRetrieve == resource.m_route) { return resource; }
+        if (route == resource.m_route) { return resource; }
     }
 
     return std::nullopt;
