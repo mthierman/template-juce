@@ -6,11 +6,11 @@
 struct Resource
 {
     Resource() = default;
-    Resource(std::string path, std::string resourceName);
+    Resource(std::string route, std::string resourceName);
 
     auto mimeType(std::string filename,
                   std::string defaultMimeType = "application/octet-stream") -> std::string;
 
-    std::string m_path;
+    std::string m_route;
     juce::WebBrowserComponent::Resource m_resource;
 };

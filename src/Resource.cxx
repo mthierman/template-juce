@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <unordered_map>
 
-Resource::Resource(std::string path, std::string resourceName) : m_path{path}
+Resource::Resource(std::string route, std::string resourceName) : m_route{route}
 {
     int dataSize{};
     auto namedResource{BinaryData::getNamedResource(resourceName.c_str(), dataSize)};

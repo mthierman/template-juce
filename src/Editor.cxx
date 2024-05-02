@@ -21,8 +21,8 @@ Editor::Editor(Processor& processor)
     m_resources.emplace_back(Resource("favicon.ico", "favicon_ico"));
 
 #if defined(HOT_RELOAD)
-    m_browser.goToURL("http://localhost:5173/");
-    // m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
+    // m_browser.goToURL("http://localhost:5173/");
+    m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
 #else
     m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
 #endif
@@ -47,9 +47,9 @@ auto Editor::getResource(const juce::String& url)
     const auto urlToRetrieve =
         url == "/" ? juce::String{"index.html"} : url.fromFirstOccurrenceOf("/", false, false);
 
-    for (const auto& res : m_resources)
+    for (const auto& resource : m_resources)
     {
-        if (urlToRetrieve == res.m_path.c_str()) { return res.m_resource; }
+        if (urlToRetrieve == resource.m_route.c_str()) { return resource.m_resource; }
     }
 
     return std::nullopt;
