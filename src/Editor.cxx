@@ -15,8 +15,8 @@ Editor::Editor(Processor& processor)
     addAndMakeVisible(m_browser);
 
 #if defined(HOT_RELOAD)
-    // m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
-    m_browser.goToURL("http://localhost:5173/");
+    m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
+    // m_browser.goToURL("http://localhost:5173/");
 #else
     m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
 #endif
@@ -39,6 +39,8 @@ auto Editor::getResource(const juce::String& url)
     -> std::optional<juce::WebBrowserComponent::Resource>
 {
     const auto requestedUrl{url == "/" ? juce::String{"/index.html"} : url};
+
+    DBG(requestedUrl);
 
     for (const auto& [route, resource] : m_resources)
     {
