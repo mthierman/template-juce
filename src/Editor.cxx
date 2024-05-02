@@ -11,7 +11,6 @@ Editor::Editor(Processor& processor)
                         m_phaseRelay, m_processor.m_parameters.undoManager}
 {
     juce::ignoreUnused(m_processor);
-    addAndMakeVisible(m_browser);
 
     addResource("/index.html", "index_html");
     addResource("/index.css", "index_css");
@@ -20,9 +19,10 @@ Editor::Editor(Processor& processor)
     addResource("/logo_dark.png", "logo_dark_png");
     addResource("/logo_light.png", "logo_light_png");
 
+    addAndMakeVisible(m_browser);
+
 #if defined(HOT_RELOAD)
-    // m_browser.goToURL("http://localhost:5173/");
-    m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
+    m_browser.goToURL("http://localhost:5173/");
 #else
     m_browser.goToURL(juce::WebBrowserComponent::getResourceProviderRoot());
 #endif
