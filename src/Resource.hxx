@@ -5,8 +5,9 @@
 struct Resource : juce::WebBrowserComponent::Resource
 {
     Resource() = default;
-    Resource(juce::String resourceName);
+    Resource(const juce::String& resourceName);
 
-    auto getMimeType(juce::String filename,
-                     juce::String defaultMimeType = "application/octet-stream") -> juce::String;
+    auto
+    getMimeType(const juce::String& filename,
+                const juce::String& defaultMimeType = "application/octet-stream") -> juce::String;
 };

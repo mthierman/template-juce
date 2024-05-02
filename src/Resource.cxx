@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <unordered_map>
 
-Resource::Resource(juce::String resourceName)
+Resource::Resource(const juce::String& resourceName)
 {
     int dataSize{};
     auto namedResource{BinaryData::getNamedResource(resourceName.toUTF8(), dataSize)};
@@ -16,7 +16,8 @@ Resource::Resource(juce::String resourceName)
     mimeType = getMimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.toUTF8()));
 }
 
-auto Resource::getMimeType(juce::String filename, juce::String defaultMimeType) -> juce::String
+auto Resource::getMimeType(const juce::String& filename,
+                           const juce::String& defaultMimeType) -> juce::String
 {
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
 
