@@ -2,7 +2,10 @@ BasedOnStyle: LLVM
 IndentWidth: 4
 ColumnLimit: 100
 SortIncludes: Never
-AlignAfterOpenBracket: Align
+AlignAfterOpenBracket: AlwaysBreak
+AllowAllArgumentsOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortEnumsOnASingleLine: true
@@ -16,12 +19,12 @@ BraceWrapping:
   AfterClass: true
   AfterControlStatement: Always
   AfterEnum: true
+  AfterExternBlock: true
   AfterFunction: true
   AfterNamespace: true
   AfterObjCDeclaration: true
   AfterStruct: true
   AfterUnion: true
-  AfterExternBlock: true
   BeforeCatch: true
   BeforeElse: true
   BeforeLambdaBody: true
@@ -30,7 +33,7 @@ BraceWrapping:
   SplitEmptyFunction: false
 BreakBeforeBraces: Custom
 BreakInheritanceList: AfterComma
-PointerAlignment: Left
-KeepEmptyLinesAtTheStartOfBlocks: true
 IndentCaseLabels: true
+KeepEmptyLinesAtTheStartOfBlocks: true
 LambdaBodyIndentation: OuterScope
+PointerAlignment: Left
