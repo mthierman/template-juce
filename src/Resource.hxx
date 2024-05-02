@@ -1,16 +1,15 @@
 #pragma once
 
 #include <juce_gui_extra/juce_gui_extra.h>
-#include <string>
 
 struct Resource : juce::WebBrowserComponent::Resource
 {
     Resource() = default;
-    Resource(std::string route, std::string resourceName);
+    Resource(juce::String route, juce::String resourceName);
 
-    auto getMimeType(std::string filename,
-                  std::string defaultMimeType = "application/octet-stream") -> std::string;
+    auto getMimeType(juce::String filename,
+                     juce::String defaultMimeType = "application/octet-stream") -> juce::String;
 
-    std::string m_route;
+    juce::String m_route;
     // juce::WebBrowserComponent::Resource m_resource;
 };

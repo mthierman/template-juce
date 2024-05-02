@@ -4,23 +4,23 @@
 #include <filesystem>
 #include <unordered_map>
 
-Resource::Resource(std::string route, std::string resourceName) : m_route{route}
+Resource::Resource(juce::String route, juce::String resourceName) : m_route{route}
 {
     int dataSize{};
-    auto namedResource{BinaryData::getNamedResource(resourceName.c_str(), dataSize)};
+    auto namedResource{BinaryData::getNamedResource(resourceName.toUTF8(), dataSize)};
 
     std::vector<std::byte> binaryData(dataSize);
     std::memcpy(binaryData.data(), namedResource, dataSize);
 
     data = binaryData;
-    mimeType = getMimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.c_str()));
+    mimeType = getMimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.toUTF8()));
 }
 
-auto Resource::getMimeType(std::string filename, std::string defaultMimeType) -> std::string
+auto Resource::getMimeType(juce::String filename, juce::String defaultMimeType) -> juce::String
 {
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
 
-    std::unordered_map<std::string, std::string> mimeTypes = {
+    std::unordered_map<juce::String, juce::String> mimeTypes = {
         {"txt", "text/plain"},
         {"html", "text/html"},
         {"css", "text/css"},
@@ -34,7 +34,8 @@ auto Resource::getMimeType(std::string filename, std::string defaultMimeType) ->
         {"svg", "image/svg+xml"},
     };
 
-    if (auto it = mimeTypes.find(std::filesystem::path(filename).extension().string().substr(1));
+    if (auto it = mimeTypes.find(
+            std::filesystem::path(filename.toStdString()).extension().string().substr(1));
         it != mimeTypes.end())
     {
         return it->second;

@@ -48,7 +48,7 @@ auto Editor::getResource(const juce::String& url)
 
     for (const auto& resource : m_resources)
     {
-        if (urlToRetrieve == resource.m_route.c_str()) { return resource; }
+        if (urlToRetrieve == resource.m_route) { return resource; }
     }
 
     return std::nullopt;
