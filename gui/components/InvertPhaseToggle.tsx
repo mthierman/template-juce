@@ -1,6 +1,8 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import * as Juce from "juce-framework-frontend";
 
+import phase_toggle from "images/phase_toggle.svg";
+
 export default function InvertPhaseToggle() {
     const invertPhaseToggle = useRef<HTMLInputElement | null>(null);
     const [phase, setPhase] = useState(false);
@@ -29,6 +31,7 @@ export default function InvertPhaseToggle() {
                 checked={phase}
                 onChange={handleInvertPhaseChange}
             />
+            <img src={phase_toggle} />
         </label>
     );
 }

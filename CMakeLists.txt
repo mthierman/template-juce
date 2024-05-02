@@ -46,9 +46,9 @@ set(GUI_OUTPUT
     "${PROJECT_BINARY_DIR}/gui/index.css"
     "${PROJECT_BINARY_DIR}/gui/index.js"
     "${PROJECT_BINARY_DIR}/gui/favicon.ico"
-    "${PROJECT_BINARY_DIR}/gui/logo_dark.svg"
-    "${PROJECT_BINARY_DIR}/gui/logo_light.svg"
-    "${PROJECT_BINARY_DIR}/gui/phase.svg"
+    # "${PROJECT_BINARY_DIR}/gui/logo_dark.svg"
+    # "${PROJECT_BINARY_DIR}/gui/logo_light.svg"
+    # "${PROJECT_BINARY_DIR}/gui/phase.svg"
 )
 
 add_custom_command(
