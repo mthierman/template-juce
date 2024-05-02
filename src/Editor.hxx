@@ -12,7 +12,6 @@ struct Editor final : public juce::AudioProcessorEditor
     auto paint(juce::Graphics&) -> void override;
     auto resized() -> void override;
 
-    // auto addResource(const juce::String& route, const juce::String& resourceName) -> void;
     auto getResource(const juce::String& url) -> std::optional<juce::WebBrowserComponent::Resource>;
 
   private:
@@ -20,6 +19,8 @@ struct Editor final : public juce::AudioProcessorEditor
 
     juce::WebSliderRelay m_gainRelay{m_browser, "gain"};
     juce::WebToggleButtonRelay m_phaseRelay{m_browser, "invertPhase"};
+    juce::WebSliderParameterAttachment m_gainAttachment;
+    juce::WebToggleButtonParameterAttachment m_phaseAttachment;
 
     std::unordered_map<juce::String, Resource> m_resources{
         {"/index.html", Resource("index_html")},
@@ -42,9 +43,6 @@ struct Editor final : public juce::AudioProcessorEditor
             .withResourceProvider([this](const auto& url) {
         return getResource(url);
     }, juce::URL{"http://localhost:5173/"}.getOrigin())};
-
-    juce::WebSliderParameterAttachment m_gainAttachment;
-    juce::WebToggleButtonParameterAttachment m_phaseAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Editor)
 };
