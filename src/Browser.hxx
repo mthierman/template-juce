@@ -6,5 +6,5 @@ struct Browser : juce::WebBrowserComponent
 {
     using juce::WebBrowserComponent::WebBrowserComponent;
 
-    // auto pageAboutToLoad(const juce::String& newUrl) -> bool override;
+    auto pageAboutToLoad(const juce::String& newUrl) -> bool override;
 };
