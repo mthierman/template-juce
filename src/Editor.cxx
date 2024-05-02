@@ -40,8 +40,6 @@ auto Editor::getResource(const juce::String& url)
 {
     const auto requestedUrl{url == "/" ? juce::String{"/index.html"} : url};
 
-    DBG(requestedUrl);
-
     for (const auto& [route, resource] : m_resources)
     {
         if (requestedUrl == route)
