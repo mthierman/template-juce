@@ -19,7 +19,11 @@ const userConfig: UserConfig = {
     },
     resolve: {
         alias: {
+            root: resolve("./"),
+            gui: resolve("gui"),
             css: resolve("gui/css"),
+            public: resolve("gui/public"),
+            src: resolve("src"),
         },
     },
 };

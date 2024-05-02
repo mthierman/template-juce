@@ -8,7 +8,7 @@
             "root/*": ["./*"],
             "gui/*": ["gui/*"],
             "css/*": ["gui/css/*"],
-            "public/*": ["public/css/*"],
+            "public/*": ["gui/public/*"],
             "src/*": ["src/*"]
         },
         "lib": ["ESNext", "DOM", "DOM.Iterable"],

@@ -36,15 +36,13 @@ export default function App() {
                 <img draggable="false" src="/logo_dark.svg" alt="logo" width="350" height="auto" />
             </picture>
 
-            <div id="inputs">
-                <label id="gain">
-                    <span id="gain-slider-value">-20.0 dB</span>
-                    <input id="gain-slider" type="range" min="0" max="1" value="0" step="0.01" />
-                </label>
+            <label id="gain" htmlFor="gain-slider">
+                -20.0 dB
+            </label>
+            <input id="gain-slider" type="range" min="0" max="1" value="0" step="0.01" />
 
-                <input type="checkbox" id="invert-phase-toggle" />
-                <label htmlFor="invert-phase-toggle"></label>
-            </div>
+            <input type="checkbox" id="invert-phase-toggle" />
+            <label htmlFor="invert-phase-toggle"></label>
         </main>
     );
 }
