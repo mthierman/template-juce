@@ -4,6 +4,9 @@ import * as Juce from "juce-framework-frontend";
 
 import "css/index.css";
 
+import logo_dark from "images/logo_dark.svg";
+import logo_light from "images/logo_light.svg";
+
 import GainSlider from "components/GainSlider";
 import InvertPhaseToggle from "./InvertPhaseToggle";
 
@@ -26,7 +29,7 @@ import InvertPhaseToggle from "./InvertPhaseToggle";
 //     console.log(phaseState);
 // });
 
-const setTheme = (theme: string) => {
+const changeTheme = (theme: string) => {
     let isDark: boolean;
 
     if (theme === "system") {
@@ -47,15 +50,19 @@ const setTheme = (theme: string) => {
 };
 
 export default function App() {
-    setTheme("light");
+    const [theme, setTheme] = useState("light");
+
+    // setTheme("light");
+
+    useEffect(() => {
+        // setTheme("dark");
+        // changeTheme(theme);
+        changeTheme("light");
+    }, []);
 
     return (
         <main className="size-full bg-blue-50 dark:bg-blue-950">
-            <picture draggable="false">
-                <source media="(prefers-color-scheme: dark)" srcSet="/logo_dark.svg" />
-                <source media="(prefers-color-scheme: light)" srcSet="/logo_light.svg" />
-                <img draggable="false" src="/logo_dark.svg" alt="logo" width="350" height="auto" />
-            </picture>
+            <img src={theme === "dark" ? logo_dark : logo_light} draggable={false} />
 
             <GainSlider />
 
