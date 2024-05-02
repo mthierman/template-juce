@@ -35,15 +35,10 @@ if(RESTORE_NUGET)
     )
 endif()
 
-set(GUI_SOURCES
-    "${PROJECT_SOURCE_DIR}/gui/index.html"
-    "${PROJECT_SOURCE_DIR}/gui/index.tsx"
-    "${PROJECT_SOURCE_DIR}/gui/App.tsx"
-    "${PROJECT_SOURCE_DIR}/gui/css/index.css"
-    "${PROJECT_SOURCE_DIR}/gui/public/favicon.ico"
-    "${PROJECT_SOURCE_DIR}/gui/public/logo_dark.svg"
-    "${PROJECT_SOURCE_DIR}/gui/public/logo_light.svg"
-    "${PROJECT_SOURCE_DIR}/gui/public/phase.svg"
+file(
+    GLOB_RECURSE
+    GUI_SOURCES
+    "${PROJECT_SOURCE_DIR}/gui"
 )
 
 set(GUI_OUTPUT
