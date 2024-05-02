@@ -29,7 +29,7 @@ export default function App() {
     console.log(phaseState);
 
     return (
-        <main>
+        <main className="dark:bg-stone-800 bg-stone-200 size-full">
             <picture draggable="false">
                 <source media="(prefers-color-scheme: dark)" srcSet="/logo_dark.svg" />
                 <source media="(prefers-color-scheme: light)" srcSet="/logo_light.svg" />
