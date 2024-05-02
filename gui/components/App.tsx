@@ -10,7 +10,7 @@ import logo_light from "images/logo_light.svg?raw";
 import GainSlider from "components/GainSlider";
 import InvertPhaseToggle from "components/InvertPhaseToggle";
 
-const logo = {
+const logoSvg = {
     dark: svg(logo_dark),
     light: svg(logo_light),
 };
@@ -67,7 +67,7 @@ export default function App() {
 
     return (
         <main className="size-full bg-blue-50 dark:bg-blue-950">
-            <img src={theme === "dark" ? logo.dark : logo.light} draggable={false} />
+            <img src={theme === "dark" ? logoSvg.dark : logoSvg.light} draggable={false} />
             <GainSlider />
             <InvertPhaseToggle />
         </main>
