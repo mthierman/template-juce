@@ -13,13 +13,6 @@ img {
     user-select: none;
 }
 
-#gain {
-    display: flex;
-    gap: 0.25em;
-    flex-direction: column;
-    min-width: 100%;
-}
-
 input[type="range"] {
     flex-grow: 1;
     appearance: none;
@@ -73,9 +66,9 @@ input[type="checkbox"]:checked + label {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
+    /* body {
         background-color: black;
-    }
+    } */
 
     input[type="range"]::-webkit-slider-runnable-track {
         background-color: white;
@@ -99,9 +92,9 @@ input[type="checkbox"]:checked + label {
 }
 
 @media (prefers-color-scheme: light) {
-    body {
+    /* body {
         background-color: white;
-    }
+    } */
 
     input[type="range"]::-webkit-slider-runnable-track {
         background: linear-gradient(to right, gray, black);
