@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import * as Juce from "juce-framework-frontend";
 
 import "css/index.css";
@@ -22,6 +24,9 @@ import "css/index.css";
 // });
 
 export default function App() {
+    const gainSlider = useRef<HTMLInputElement | null>(null);
+    const invertPhaseToggle = useRef<HTMLInputElement | null>(null);
+
     const gainState = Juce.getSliderState("gain");
     const phaseState = Juce.getToggleState("invertPhase");
 
@@ -29,20 +34,21 @@ export default function App() {
     console.log(phaseState);
 
     return (
-        <main className="dark:bg-stone-800 bg-stone-200 size-full">
+        <main className="size-full bg-stone-200 dark:bg-stone-800">
             <picture draggable="false">
                 <source media="(prefers-color-scheme: dark)" srcSet="/logo_dark.svg" />
                 <source media="(prefers-color-scheme: light)" srcSet="/logo_light.svg" />
                 <img draggable="false" src="/logo_dark.svg" alt="logo" width="350" height="auto" />
             </picture>
 
-            <label id="gain-slider-label" htmlFor="gain-slider">
+            <label>
                 -20.0 dB
+                <input ref={gainSlider} type="range" min="0" max="1" value="0" step="0.01" />
             </label>
-            <input id="gain-slider" type="range" min="0" max="1" value="0" step="0.01" />
 
-            <label id="invert-phase-toggle-label" htmlFor="invert-phase-toggle"></label>
-            <input id="invert-phase-toggle" type="checkbox" />
+            <label>
+                <input ref={invertPhaseToggle} id="invert-phase-toggle" type="checkbox" />
+            </label>
         </main>
     );
 }
