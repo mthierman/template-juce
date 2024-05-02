@@ -2,6 +2,7 @@ import { SyntheticEvent, useEffect, useRef, useState } from "react";
 
 import * as Juce from "juce-framework-frontend";
 
+import GainSlider from "components/GainSlider";
 import "css/index.css";
 
 // const gainSlider = document.getElementById("gain-slider") as HTMLInputElement;
@@ -24,9 +25,8 @@ import "css/index.css";
 // });
 
 export default function App() {
-    const gainSlider = useRef<HTMLInputElement | null>(null);
     const invertPhaseToggle = useRef<HTMLInputElement | null>(null);
-    const [gain, setGain] = useState("");
+    const [phase, setPhase] = useState(false);
 
     const gainState = Juce.getSliderState("gain");
     const phaseState = Juce.getToggleState("invertPhase");
@@ -53,18 +53,7 @@ export default function App() {
                 <img draggable="false" src="/logo_dark.svg" alt="logo" width="350" height="auto" />
             </picture>
 
-            <label>
-                -20.0 dB
-                <input
-                    ref={gainSlider}
-                    type="range"
-                    min="0"
-                    max="1"
-                    value={gain}
-                    onChange={handleGainChange}
-                    step="0.01"
-                />
-            </label>
+            <GainSlider />
 
             <label>
                 <input
