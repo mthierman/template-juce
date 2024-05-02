@@ -1,4 +1,4 @@
-import { SyntheticEvent, useRef, useState } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 
 import * as Juce from "juce-framework-frontend";
 
@@ -26,18 +26,24 @@ import "css/index.css";
 export default function App() {
     const gainSlider = useRef<HTMLInputElement | null>(null);
     const invertPhaseToggle = useRef<HTMLInputElement | null>(null);
-    const [gain, setGain] = useState(0);
+    const [gain, setGain] = useState("");
 
     const gainState = Juce.getSliderState("gain");
     const phaseState = Juce.getToggleState("invertPhase");
 
-    console.log(gainState);
-    console.log(phaseState);
+    useEffect(() => {
+        console.log(gainState);
+        console.log(phaseState);
+    }, []);
 
     const handleGainChange = (e: SyntheticEvent) => {
         const target = e.target as HTMLInputElement;
-        console.log(target.value);
+        setGain(target.value);
     };
+
+    useEffect(() => {
+        console.log(gain);
+    }, [gain]);
 
     return (
         <main className="size-full bg-stone-200 dark:bg-stone-800">
@@ -54,6 +60,7 @@ export default function App() {
                     type="range"
                     min="0"
                     max="1"
+                    value={gain}
                     onChange={handleGainChange}
                     step="0.01"
                 />
