@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { SyntheticEvent, useRef, useState } from "react";
 
 import * as Juce from "juce-framework-frontend";
 
@@ -26,12 +26,18 @@ import "css/index.css";
 export default function App() {
     const gainSlider = useRef<HTMLInputElement | null>(null);
     const invertPhaseToggle = useRef<HTMLInputElement | null>(null);
+    const [gain, setGain] = useState(0);
 
     const gainState = Juce.getSliderState("gain");
     const phaseState = Juce.getToggleState("invertPhase");
 
     console.log(gainState);
     console.log(phaseState);
+
+    const handleGainChange = (e: SyntheticEvent) => {
+        const target = e.target as HTMLInputElement;
+        console.log(target.value);
+    };
 
     return (
         <main className="size-full bg-stone-200 dark:bg-stone-800">
@@ -43,11 +49,23 @@ export default function App() {
 
             <label>
                 -20.0 dB
-                <input ref={gainSlider} type="range" min="0" max="1" value="0" step="0.01" />
+                <input
+                    ref={gainSlider}
+                    type="range"
+                    min="0"
+                    max="1"
+                    onChange={handleGainChange}
+                    step="0.01"
+                />
             </label>
 
             <label>
-                <input ref={invertPhaseToggle} id="invert-phase-toggle" type="checkbox" />
+                <input
+                    ref={invertPhaseToggle}
+                    id="invert-phase-toggle"
+                    type="checkbox"
+                    defaultChecked={false}
+                />
             </label>
         </main>
     );
