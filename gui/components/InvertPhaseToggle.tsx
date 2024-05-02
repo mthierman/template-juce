@@ -14,6 +14,7 @@ export default function InvertPhaseToggle() {
     const svgRef = useRef<SVGSVGElement | null>(null);
     const svgRectRef = useRef<SVGRectElement | null>(null);
 
+    // https://www.geeksforgeeks.org/how-to-change-svg-icon-color-on-click-in-javascript/
     svgRef.current?.setAttribute("fill", "red");
     svgRectRef.current?.setAttribute("fill", "red");
 
