@@ -26,9 +26,31 @@ import InvertPhaseToggle from "./InvertPhaseToggle";
 //     console.log(phaseState);
 // });
 
+const setTheme = (theme: string) => {
+    let isDark: boolean;
+
+    if (theme === "system") {
+        isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    } else {
+        isDark = theme === "dark" ? true : false;
+    }
+
+    localStorage.setItem("theme", theme);
+
+    document
+        .querySelector('meta[name="color-scheme"]')
+        ?.setAttribute("content", isDark ? "dark" : "light");
+
+    isDark
+        ? document.documentElement.classList.add("dark")
+        : document.documentElement.classList.remove("dark");
+};
+
 export default function App() {
+    setTheme("light");
+
     return (
-        <main className="size-full bg-stone-200 dark:bg-stone-800">
+        <main className="size-full bg-blue-50 dark:bg-blue-950">
             <picture draggable="false">
                 <source media="(prefers-color-scheme: dark)" srcSet="/logo_dark.svg" />
                 <source media="(prefers-color-scheme: light)" srcSet="/logo_light.svg" />
