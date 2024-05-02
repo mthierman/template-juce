@@ -17,8 +17,10 @@
             </picture>
 
             <div id="inputs">
-                <label id="gain-label" for="gain-slider">-20.0 dB</label>
-                <input id="gain-slider" type="range" min="0" max="1" value="0" step="0.01" />
+                <label id="gain">
+                    <span id="gain-slider-value">-20.0 dB</span>
+                    <input id="gain-slider" type="range" min="0" max="1" value="0" step="0.01" />
+                </label>
 
                 <input type="checkbox" id="invert-phase-toggle" />
                 <label for="invert-phase-toggle"></label>
