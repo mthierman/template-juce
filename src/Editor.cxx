@@ -13,12 +13,12 @@ Editor::Editor(Processor& processor)
     juce::ignoreUnused(m_processor);
     addAndMakeVisible(m_browser);
 
-    m_resources.emplace("/index.html", Resource("index_html"));
-    m_resources.emplace("/index.css", Resource("index_css"));
-    m_resources.emplace("/index.js", Resource("index_js"));
-    m_resources.emplace("/favicon.ico", Resource("favicon_ico"));
-    m_resources.emplace("/logo_dark.png", Resource("logo_dark_png"));
-    m_resources.emplace("/logo_light.png", Resource("logo_light_png"));
+    m_resources.try_emplace("/index.html", Resource("index_html"));
+    m_resources.try_emplace("/index.css", Resource("index_css"));
+    m_resources.try_emplace("/index.js", Resource("index_js"));
+    m_resources.try_emplace("/favicon.ico", Resource("favicon_ico"));
+    m_resources.try_emplace("/logo_dark.png", Resource("logo_dark_png"));
+    m_resources.try_emplace("/logo_light.png", Resource("logo_light_png"));
 
 #if defined(HOT_RELOAD)
     // m_browser.goToURL("http://localhost:5173/");
