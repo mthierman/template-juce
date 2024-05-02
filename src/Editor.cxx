@@ -13,12 +13,12 @@ Editor::Editor(Processor& processor)
     juce::ignoreUnused(m_processor);
     addAndMakeVisible(m_browser);
 
-    m_resources.try_emplace("/index.html", Resource("index_html"));
-    m_resources.try_emplace("/index.css", Resource("index_css"));
-    m_resources.try_emplace("/index.js", Resource("index_js"));
-    m_resources.try_emplace("/favicon.ico", Resource("favicon_ico"));
-    m_resources.try_emplace("/logo_dark.png", Resource("logo_dark_png"));
-    m_resources.try_emplace("/logo_light.png", Resource("logo_light_png"));
+    addResource("/index.html", "index_html");
+    addResource("/index.css", "index_css");
+    addResource("/index.js", "index_js");
+    addResource("/favicon.ico", "favicon_ico");
+    addResource("/logo_dark.png", "logo_dark_png");
+    addResource("/logo_light.png", "logo_light_png");
 
 #if defined(HOT_RELOAD)
     // m_browser.goToURL("http://localhost:5173/");
@@ -40,6 +40,11 @@ auto Editor::paint(juce::Graphics& graphics) -> void
 }
 
 auto Editor::resized() -> void { m_browser.setBounds(getLocalBounds()); }
+
+auto Editor::addResource(const juce::String& route, const juce::String& resourceName) -> void
+{
+    m_resources.try_emplace(route, Resource(resourceName));
+}
 
 auto Editor::getResource(const juce::String& url)
     -> std::optional<juce::WebBrowserComponent::Resource>

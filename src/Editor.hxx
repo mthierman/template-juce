@@ -11,6 +11,7 @@ struct Editor final : public juce::AudioProcessorEditor
     auto paint(juce::Graphics&) -> void override;
     auto resized() -> void override;
 
+    auto addResource(const juce::String& route, const juce::String& resourceName) -> void;
     auto getResource(const juce::String& url) -> std::optional<juce::WebBrowserComponent::Resource>;
 
   private:
