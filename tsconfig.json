@@ -10,6 +10,7 @@
             "components/*": ["gui/components/*"],
             "css/*": ["gui/css/*"],
             "images/*": ["gui/images/*"],
+            "modules/*": ["gui/modules/*"],
             "public/*": ["gui/public/*"],
             "src/*": ["src/*"]
         },

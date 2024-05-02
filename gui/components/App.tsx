@@ -3,16 +3,12 @@ import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import * as Juce from "juce-framework-frontend";
 
 import "css/index.css";
-
+import svg from "modules/svg";
 import logo_dark from "images/logo_dark.svg?raw";
 import logo_light from "images/logo_light.svg?raw";
 
 import GainSlider from "components/GainSlider";
-import InvertPhaseToggle from "./InvertPhaseToggle";
-
-const svg = (raw: string) => {
-    return `data:image/svg+xml,${encodeURIComponent(raw)}`;
-};
+import InvertPhaseToggle from "components/InvertPhaseToggle";
 
 const logo = {
     dark: svg(logo_dark),

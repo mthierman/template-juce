@@ -23,6 +23,7 @@ const userConfig: UserConfig = {
             components: resolve("gui/components"),
             css: resolve("gui/css"),
             images: resolve("gui/images"),
+            modules: resolve("gui/modules"),
             public: resolve("gui/public"),
             src: resolve("src"),
         },
