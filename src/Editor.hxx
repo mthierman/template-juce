@@ -40,9 +40,8 @@ struct Editor final : public juce::AudioProcessorEditor
             .withNativeIntegrationEnabled()
             .withOptionsFrom(m_gainRelay)
             .withOptionsFrom(m_phaseRelay)
-            .withResourceProvider([this](const auto& url) {
-        return getResource(url);
-    }, juce::URL{"http://localhost:5173/"}.getOrigin())};
+            .withResourceProvider([this](const auto& url) { return getResource(url); },
+                                  juce::URL{"http://localhost:5173/"}.getOrigin())};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Editor)
 };

@@ -14,8 +14,8 @@ Resource::Resource(const juce::String& resourceName)
     mimeType = getMimeType(BinaryData::getNamedResourceOriginalFilename(resourceName.toUTF8()));
 }
 
-auto Resource::getMimeType(const juce::String& filename, const juce::String& defaultMimeType)
-    -> juce::String
+auto Resource::getMimeType(const juce::String& filename,
+                           const juce::String& defaultMimeType) -> juce::String
 {
     if (auto iterator = m_mimeTypes.find(
             std::filesystem::path(filename.toStdString()).extension().string().substr(1));
@@ -24,5 +24,8 @@ auto Resource::getMimeType(const juce::String& filename, const juce::String& def
         return iterator->second;
     }
 
-    else { return defaultMimeType; }
+    else
+    {
+        return defaultMimeType;
+    }
 }

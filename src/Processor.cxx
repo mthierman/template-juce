@@ -10,19 +10,16 @@ Processor::Processor()
                          .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
                          ),
-      m_parameters{
-          *this,
-          nullptr,
-          juce::Identifier("JuceWebView"),
-          {std::make_unique<juce::AudioParameterFloat>(
-               m_parameterMap.at(Parameters::gain).first,
-               m_parameterMap.at(Parameters::gain).second,
-               juce::NormalisableRange<float>(0.0f, 1.0f),
-               0.5f),
-           std::make_unique<juce::AudioParameterBool>(
-               m_parameterMap.at(Parameters::invertPhase).first,
-               m_parameterMap.at(Parameters::invertPhase).second,
-               false)}}
+      m_parameters{*this,
+                   nullptr,
+                   juce::Identifier("JuceWebView"),
+                   {std::make_unique<juce::AudioParameterFloat>(
+                        m_parameterMap.at(Parameters::gain).first,
+                        m_parameterMap.at(Parameters::gain).second,
+                        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f),
+                    std::make_unique<juce::AudioParameterBool>(
+                        m_parameterMap.at(Parameters::invertPhase).first,
+                        m_parameterMap.at(Parameters::invertPhase).second, false)}}
 {
     m_gainParameter = m_parameters.getRawParameterValue(m_parameterMap.at(Parameters::gain).first);
     m_phaseParameter =
@@ -98,14 +95,15 @@ auto Processor::isBusesLayoutSupported(const BusesLayout& layouts) const -> bool
         layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
 #if !JucePlugin_IsSynth
-    if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet()) return false;
+    if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
+        return false;
 #endif
     return true;
 #endif
 }
 
-auto Processor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
-    -> void
+auto Processor::processBlock(juce::AudioBuffer<float>& buffer,
+                             juce::MidiBuffer& midiMessages) -> void
 {
     juce::ignoreUnused(midiMessages);
 
