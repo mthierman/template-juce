@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Browser.hxx"
 #include "Processor.hxx"
 #include "Resource.hxx"
 
@@ -22,7 +23,7 @@ struct Editor final : public juce::AudioProcessorEditor
 
     std::unordered_map<juce::String, Resource> m_resources;
 
-    juce::WebBrowserComponent m_browser{
+    Browser m_browser{
         juce::WebBrowserComponent::Options{}
             .withBackend(juce::WebBrowserComponent::Options::Backend::webview2)
             .withWinWebView2Options(

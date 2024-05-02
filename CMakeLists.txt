@@ -6,7 +6,7 @@ project(
 )
 
 option(
-    JUCE_RESTORE_NUGET
+    RESTORE_NUGET
     "Restore Nuget packages"
     ON
 )
@@ -31,7 +31,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(fontaudio)
 
-if(JUCE_RESTORE_NUGET)
+if(RESTORE_NUGET)
     execute_process(
         COMMAND nuget restore -PackagesDirectory "${CMAKE_BINARY_DIR}/_deps/Nuget"
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
@@ -125,7 +125,8 @@ target_compile_features(
 
 target_sources(
     ${PROJECT_NAME}
-    PRIVATE "${PROJECT_SOURCE_DIR}/src/Editor.cxx"
+    PRIVATE "${PROJECT_SOURCE_DIR}/src/Browser.cxx"
+            "${PROJECT_SOURCE_DIR}/src/Editor.cxx"
             "${PROJECT_SOURCE_DIR}/src/Processor.cxx"
             "${PROJECT_SOURCE_DIR}/src/Resource.cxx"
     PRIVATE FILE_SET
@@ -133,6 +134,7 @@ target_sources(
             BASE_DIRS
             "${PROJECT_SOURCE_DIR}/src"
             FILES
+            "${PROJECT_SOURCE_DIR}/src/Browser.hxx"
             "${PROJECT_SOURCE_DIR}/src/Editor.hxx"
             "${PROJECT_SOURCE_DIR}/src/Global.hxx"
             "${PROJECT_SOURCE_DIR}/src/Processor.hxx"
