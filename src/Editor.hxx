@@ -31,8 +31,9 @@ struct Editor final : public juce::AudioProcessorEditor
             .withNativeIntegrationEnabled()
             .withOptionsFrom(m_gainRelay)
             .withOptionsFrom(m_phaseRelay)
-            .withResourceProvider([this](const auto& url) { return getResource(url); },
-                                  juce::URL{"http://localhost:5173/"}.getOrigin())};
+            .withResourceProvider([this](const auto& url) {
+        return getResource(url);
+    }, juce::URL{"http://localhost:5173/"}.getOrigin())};
 
     juce::WebSliderParameterAttachment m_gainAttachment;
     juce::WebToggleButtonParameterAttachment m_phaseAttachment;

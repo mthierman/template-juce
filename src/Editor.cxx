@@ -3,12 +3,16 @@
 
 Editor::Editor(Processor& processor)
     : AudioProcessorEditor{&processor}, m_processor{processor},
-      m_gainAttachment{*m_processor.m_parameters.getParameter(
-                           m_processor.m_parameterMap.at(Parameters::gain).first),
-                       m_gainRelay, m_processor.m_parameters.undoManager},
-      m_phaseAttachment{*m_processor.m_parameters.getParameter(
-                            m_processor.m_parameterMap.at(Parameters::invertPhase).first),
-                        m_phaseRelay, m_processor.m_parameters.undoManager}
+      m_gainAttachment{
+          *m_processor.m_parameters.getParameter(
+              m_processor.m_parameterMap.at(Parameters::gain).first),
+          m_gainRelay,
+          m_processor.m_parameters.undoManager},
+      m_phaseAttachment{
+          *m_processor.m_parameters.getParameter(
+              m_processor.m_parameterMap.at(Parameters::invertPhase).first),
+          m_phaseRelay,
+          m_processor.m_parameters.undoManager}
 {
     juce::ignoreUnused(m_processor);
 
