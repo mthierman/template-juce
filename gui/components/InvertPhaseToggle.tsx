@@ -15,8 +15,8 @@ export default function InvertPhaseToggle() {
     const svgRectRef = useRef<SVGRectElement | null>(null);
 
     // https://www.geeksforgeeks.org/how-to-change-svg-icon-color-on-click-in-javascript/
-    svgRef.current?.setAttribute("fill", "red");
-    svgRectRef.current?.setAttribute("fill", "red");
+    // svgRef.current?.setAttribute("fill", "red");
+    // svgRectRef.current?.setAttribute("fill", "red");
 
     const phaseState = Juce.getToggleState("invertPhase");
 
@@ -42,16 +42,18 @@ export default function InvertPhaseToggle() {
                 checked={phase}
                 onChange={handleInvertPhaseChange}
             />
-            <img src={phaseToggleSvg.default} draggable={false} />
 
             <svg
                 ref={svgRef}
-                width="300"
-                height="300"
+                width="100"
+                height="100"
+                preserveAspectRatio="true"
+                className="group rounded-full bg-gray-400 hover:bg-blue-400"
                 viewBox="0 0 300 300"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect
+                    className="fill-black group-hover:fill-red-400"
                     ref={svgRectRef}
                     x="186.056"
                     y="17"
@@ -61,7 +63,13 @@ export default function InvertPhaseToggle() {
                     transform="rotate(20 186.056 17)"
                     fill="black"
                 />
-                <circle cx="150" cy="150" r="88" stroke="black" stroke-width="24" />
+                <circle
+                    className="stroke-black group-hover:stroke-red-400"
+                    cx="150"
+                    cy="150"
+                    r="88"
+                    stroke-width="24"
+                />
             </svg>
         </label>
     );
