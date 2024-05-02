@@ -20,7 +20,8 @@
         "noEmit": true,
         "isolatedModules": true,
         "strict": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "types": ["vite/client"]
     },
     "include": ["gui", "**/*.config.ts"]
 }

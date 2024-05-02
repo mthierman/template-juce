@@ -1,7 +1,7 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import * as Juce from "juce-framework-frontend";
 
-import phase_toggle from "images/phase_toggle.svg";
+import phase_toggle from "images/phase_toggle.svg?url";
 
 export default function InvertPhaseToggle() {
     const invertPhaseToggle = useRef<HTMLInputElement | null>(null);

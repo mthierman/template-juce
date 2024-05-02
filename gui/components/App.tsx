@@ -4,11 +4,14 @@ import * as Juce from "juce-framework-frontend";
 
 import "css/index.css";
 
-import logo_dark from "images/logo_dark.svg";
-import logo_light from "images/logo_light.svg";
+import logo_dark_raw from "images/logo_dark.svg?raw";
+import logo_light_raw from "images/logo_light.svg?raw";
 
 import GainSlider from "components/GainSlider";
 import InvertPhaseToggle from "./InvertPhaseToggle";
+
+const logo_dark = `data:image/svg+xml,${encodeURIComponent(logo_dark_raw)}`;
+const logo_light = `data:image/svg+xml,${encodeURIComponent(logo_light_raw)}`;
 
 // const gainSlider = document.getElementById("gain-slider") as HTMLInputElement;
 // const phaseButton = document.getElementById("invert-phase-toggle") as HTMLInputElement;
@@ -60,12 +63,14 @@ export default function App() {
         changeTheme("light");
     }, []);
 
+    const logoSource = () => {
+        return theme === "dark" ? logo_dark : logo_light;
+    };
+
     return (
         <main className="size-full bg-blue-50 dark:bg-blue-950">
-            <img src={theme === "dark" ? logo_dark : logo_light} draggable={false} />
-
+            <img src={logoSource()} draggable={false} />
             <GainSlider />
-
             <InvertPhaseToggle />
         </main>
     );
