@@ -7,6 +7,7 @@
         "paths": {
             "root/*": ["./*"],
             "gui/*": ["gui/*"],
+            "components/*": ["gui/components/*"],
             "css/*": ["gui/css/*"],
             "public/*": ["gui/public/*"],
             "src/*": ["src/*"]
