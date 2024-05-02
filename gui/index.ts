@@ -9,7 +9,7 @@ console.log(gainState);
 console.log(phaseState);
 
 const gainSlider = document.getElementById("gain-slider") as HTMLInputElement;
-const phaseButton = document.getElementById("invert-phase-button") as HTMLInputElement;
+const phaseButton = document.getElementById("invert-phase-toggle") as HTMLInputElement;
 
 gainSlider.addEventListener("input", (e: Event) => {
     const target = e.target as HTMLInputElement;
