@@ -45,11 +45,11 @@ auto Resource::getMimeType(const juce::String& filename, const juce::String& def
         {"zip", "application/zip"},
     };
 
-    if (auto it = mimeTypes.find(
+    if (auto iterator = mimeTypes.find(
             std::filesystem::path(filename.toStdString()).extension().string().substr(1));
-        it != mimeTypes.end())
+        iterator != mimeTypes.end())
     {
-        return it->second;
+        return iterator->second;
     }
 
     else { return defaultMimeType; }
