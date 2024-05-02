@@ -53,10 +53,8 @@ img {
 
 #inputs {
     display: flex;
-    /* background-color: red; */
     justify-content: center;
     gap: 0.25em;
-    /* background-color: red; */
 }
 
 input[type="range"] {
