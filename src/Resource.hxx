@@ -4,7 +4,6 @@
 
 struct Resource : juce::WebBrowserComponent::Resource
 {
-    Resource() = default;
     Resource(const juce::String& resourceName);
 
     auto
