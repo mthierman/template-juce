@@ -17,9 +17,9 @@ Resource::Resource(const juce::String& resourceName)
 auto Resource::getMimeType(const juce::String& filename,
                            const juce::String& defaultMimeType) -> juce::String
 {
-    if (auto iterator{m_mimeTypes.find(
+    if (auto iterator{s_mimeTypes.find(
             std::filesystem::path(filename.toStdString()).extension().string().substr(1))};
-        iterator != m_mimeTypes.end())
+        iterator != s_mimeTypes.end())
     {
         return iterator->second;
     }
