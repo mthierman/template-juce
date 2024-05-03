@@ -4,6 +4,7 @@ import * as Juce from "juce-framework-frontend";
 
 import "css/index.css";
 import svg from "modules/svg";
+import changeTheme from "modules/changeTheme";
 import logo_dark from "images/logo_dark.svg?raw";
 import logo_light from "images/logo_light.svg?raw";
 
@@ -33,26 +34,6 @@ const logoSvg = {
 //     phaseState.setValue(true);
 //     console.log(phaseState);
 // });
-
-const changeTheme = (theme: string) => {
-    let isDark: boolean;
-
-    if (theme === "system") {
-        isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    } else {
-        isDark = theme === "dark" ? true : false;
-    }
-
-    localStorage.setItem("theme", theme);
-
-    document
-        .querySelector('meta[name="color-scheme"]')
-        ?.setAttribute("content", isDark ? "dark" : "light");
-
-    isDark
-        ? document.documentElement.classList.add("dark")
-        : document.documentElement.classList.remove("dark");
-};
 
 export default function App() {
     const [theme, setTheme] = useState("dark");
