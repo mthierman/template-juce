@@ -4,7 +4,7 @@
 
 struct Resource : juce::WebBrowserComponent::Resource
 {
-    Resource(const juce::String& resourceName);
+    explicit Resource(const juce::String& resourceName);
 
     auto
     getMimeType(const juce::String& filename,
