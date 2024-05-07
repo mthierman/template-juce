@@ -5,7 +5,7 @@ set(RESTORE_NUGET
 cmake_path(
     SET
     juce_SOURCE_DIR
-    "$ENV{LIBRARIES}/JUCE"
+    "$ENV{LIBRARIES}/JUCE/.worktree/juce8"
 )
 
 cmake_path(
