@@ -47,8 +47,7 @@ export default function InvertPhaseToggle() {
                 ref={svgRef}
                 width="100"
                 height="100"
-                preserveAspectRatio="true"
-                className="group rounded-full bg-neutral-300 hover:cursor-pointer hover:bg-neutral-200 shadow-lg shadow-black"
+                className="group rounded-full bg-neutral-300 shadow-lg shadow-black hover:cursor-pointer hover:bg-neutral-200"
                 viewBox="0 0 300 300"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +67,7 @@ export default function InvertPhaseToggle() {
                     cx="150"
                     cy="150"
                     r="88"
-                    stroke-width="24"
+                    strokeWidth="24"
                 />
             </svg>
         </label>
