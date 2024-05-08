@@ -1,5 +1,9 @@
-import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import * as Juce from "juce-framework-frontend";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
+import tailwindConfig from "root/tailwind.config";
+import resolveConfig from "tailwindcss/resolveConfig.js";
+
+const tailwind = resolveConfig(tailwindConfig).theme.colors;
 
 export default function InvertPhaseToggle() {
     const invertPhaseToggle = useRef<HTMLInputElement | null>(null);
@@ -37,28 +41,28 @@ export default function InvertPhaseToggle() {
 
             <svg
                 ref={svgRef}
-                className="group w-8 rounded-full bg-neutral-300 shadow-lg shadow-black hover:cursor-pointer hover:bg-neutral-200"
+                className={`w-8 cursor-pointer rounded-full shadow-lg shadow-black ${phase ? "bg-gray-800" : "bg-gray-200"}`}
                 viewBox="0 0 300 300"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect
                     ref={svgRectRef}
-                    className="group-hover:fill-emerald-400 dark:group-hover:fill-emerald-600"
+                    className={`group-hover:fill-emerald-400 dark:group-hover:fill-emerald-600 ${phase ? "fill-blue-400" : "fill-black"}`}
                     x="186.056"
                     y="17"
                     width="24"
                     height="275"
                     rx="8"
                     transform="rotate(20 186.056 17)"
-                    fill={phase ? "#FF0000" : "#000"}
+                    fill="black"
                 />
                 <circle
                     ref={svgCircleRef}
-                    className="group-hover:stroke-emerald-400 dark:group-hover:stroke-emerald-600"
+                    className={`group-hover:stroke-emerald-400 dark:group-hover:stroke-emerald-600 ${phase ? "stroke-blue-400" : "stroke-black"}`}
                     cx="150"
                     cy="150"
                     r="88"
-                    stroke={phase ? "#FF0000" : "#000"}
+                    stroke="black"
                     strokeWidth="24"
                 />
             </svg>

@@ -1,6 +1,6 @@
-import { SyntheticEvent, useEffect, useRef, useState } from "react";
-import * as Juce from "juce-framework-frontend";
 import InvertPhaseToggle from "components/InvertPhaseToggle";
+import * as Juce from "juce-framework-frontend";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 
 export default function GainSlider() {
     const gainSlider = useRef<HTMLInputElement | null>(null);
