@@ -14,7 +14,6 @@ export default function App() {
 
     useEffect(() => {
         const themeChange = () => {
-            console.log("themeChange");
             if (theme === "system") {
                 updateTheme(theme);
                 setLogo(loadLogo());

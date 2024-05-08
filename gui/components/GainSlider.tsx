@@ -44,6 +44,7 @@ export default function GainSlider() {
         <label>
             -20.0 dB
             <input
+                className="[&::-webkit-slider-runnable-track]:bg-black dark:[&::-webkit-slider-runnable-track]:bg-white [&::-webkit-slider-thumb]:bg-white hover:[&::-webkit-slider-thumb]:bg-blue-600 dark:[&::-webkit-slider-thumb]:bg-black hover:dark:[&::-webkit-slider-thumb]:bg-blue-600"
                 ref={gainSlider}
                 type="range"
                 min="0.00"
