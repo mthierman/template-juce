@@ -9,5 +9,5 @@ export const updateTheme = (darkMode: boolean) => {
 };
 
 export const checkDarkMode = () => {
-    return document.querySelector('meta[name="color-scheme"]')?.getAttribute("content") === "dark";
+    return document.documentElement.classList.contains("dark");
 };
