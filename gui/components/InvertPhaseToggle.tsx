@@ -1,11 +1,11 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import * as Juce from "juce-framework-frontend";
 
-import svg from "modules/svg";
+import { svgUrl } from "modules/theme";
 import phase_toggle from "images/phase_toggle.svg?raw";
 
 const phaseToggleSvg = {
-    default: svg(phase_toggle),
+    default: svgUrl(phase_toggle),
 };
 
 export default function InvertPhaseToggle() {

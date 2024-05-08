@@ -28,7 +28,7 @@ export default function App() {
     }, []);
 
     return (
-        <main>
+        <main className="flex flex-col">
             <img className="select-none" src={logo} draggable="false" />
             <GainSlider />
             <InvertPhaseToggle />
