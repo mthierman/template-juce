@@ -4,7 +4,6 @@ import * as Juce from "juce-framework-frontend";
 export default function GainSlider() {
     const gainSlider = useRef<HTMLInputElement | null>(null);
     const [gain, setGain] = useState("0.50");
-    const [shiftKey, setShiftKey] = useState(false);
 
     const gainState = Juce.getSliderState("gain");
 
@@ -22,12 +21,7 @@ export default function GainSlider() {
     };
 
     const handleGainWheel = (e: SyntheticEvent) => {
-        console.log(gain);
-
-        const target = e.currentTarget as HTMLInputElement;
         const event = e.nativeEvent as WheelEvent;
-
-        event.shiftKey ? setShiftKey(true) : setShiftKey(false);
 
         if (event.deltaY < 0) {
             setGain((Number(gain) + (event.shiftKey ? 0.01 : 0.1)).toFixed(2));
