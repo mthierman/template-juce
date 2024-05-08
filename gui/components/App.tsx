@@ -20,11 +20,13 @@ export default function App() {
             }
         };
 
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", themeChange);
+        const mql = window.matchMedia("(prefers-color-scheme: dark)");
 
-        return window
-            .matchMedia("(prefers-color-scheme: dark)")
-            .removeEventListener("change", themeChange);
+        mql.addEventListener("change", themeChange);
+
+        return () => {
+            mql.removeEventListener("change", themeChange);
+        };
     }, []);
 
     return (
