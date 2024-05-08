@@ -1,14 +1,7 @@
 #include "Processor.hxx"
 #include "Editor.hxx"
 
-Editor::Editor(Processor& processor)
-    : AudioProcessorEditor{&processor}, m_processor{processor},
-      m_gainAttachment{*m_processor.m_parameters.getParameter(
-                           m_processor.m_parameterMap.at(Parameters::gain).first),
-                       m_gainRelay, m_processor.m_parameters.undoManager},
-      m_phaseAttachment{*m_processor.m_parameters.getParameter(
-                            m_processor.m_parameterMap.at(Parameters::invertPhase).first),
-                        m_phaseRelay, m_processor.m_parameters.undoManager}
+Editor::Editor(Processor& processor) : AudioProcessorEditor{&processor}, m_processor{processor}
 {
     juce::ignoreUnused(m_processor);
 
@@ -28,7 +21,7 @@ Editor::Editor(Processor& processor)
 #endif
 
     setResizable(true, true);
-    setResizeLimits(200, 100, 800, 600);
+    setResizeLimits(200, 100, 1920, 1080);
     setSize(200, 100);
 }
 
