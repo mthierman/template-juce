@@ -13,4 +13,6 @@ export default (theme: string) => {
     darkMode
         ? document.documentElement.classList.add("dark")
         : document.documentElement.classList.remove("dark");
+
+    return darkMode;
 };

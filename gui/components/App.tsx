@@ -22,19 +22,11 @@ export default function App() {
         return storedTheme ? storedTheme : "system";
     });
 
-    changeTheme(theme);
+    const darkMode = changeTheme(theme);
 
     return (
         <main>
-            <img
-                src={
-                    document.querySelector('meta[name="color-scheme"]')?.getAttribute("content") ===
-                    "dark"
-                        ? logoSvg.dark
-                        : logoSvg.light
-                }
-                draggable={false}
-            />
+            <img src={darkMode ? logoSvg.dark : logoSvg.light} draggable={false} />
             <GainSlider />
             <InvertPhaseToggle />
         </main>
