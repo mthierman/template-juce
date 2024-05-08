@@ -1,30 +1,14 @@
 import { useState, useEffect } from "react";
 
 import "css/index.css";
-import svg from "modules/svg";
-import { checkDarkMode, updateTheme } from "modules/changeTheme";
-import logo_dark from "images/logo_dark.svg?raw";
-import logo_light from "images/logo_light.svg?raw";
+import { checkDarkMode, updateTheme, loadTheme, loadLogo } from "modules/changeTheme";
 
 import GainSlider from "components/GainSlider";
 import InvertPhaseToggle from "components/InvertPhaseToggle";
 
-const logoSvg = {
-    dark: svg(logo_dark),
-    light: svg(logo_light),
-};
-
 export default function App() {
-    const [theme, setTheme] = useState(() => {
-        const storedTheme = localStorage.getItem("theme");
-        if (storedTheme) {
-            return storedTheme;
-        } else {
-            localStorage.setItem("theme", "system");
-            return "system";
-        }
-    });
-    const [logo, setLogo] = useState(checkDarkMode() ? logoSvg.dark : logoSvg.light);
+    const [theme, setTheme] = useState(loadTheme());
+    const [logo, setLogo] = useState(loadLogo());
 
     updateTheme(
         theme === "system"
@@ -39,7 +23,7 @@ export default function App() {
                     ? window.matchMedia("(prefers-color-scheme: dark)").matches
                     : theme === "dark",
             );
-            setLogo(checkDarkMode() ? logoSvg.dark : logoSvg.light);
+            setLogo(loadLogo());
         });
     }, []);
 
