@@ -41,13 +41,13 @@ export default function InvertPhaseToggle() {
 
             <svg
                 ref={svgRef}
-                className={`w-8 cursor-pointer rounded-full shadow-lg shadow-black ${phase ? "bg-gray-800" : "bg-gray-200"}`}
+                className={`w-8 cursor-pointer rounded-full shadow-lg shadow-black outline-dotted outline-2 outline-transparent hover:outline-blue-400 ${phase ? "bg-blue-800" : "bg-gray-400"}`}
                 viewBox="0 0 300 300"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect
                     ref={svgRectRef}
-                    className={`group-hover:fill-emerald-400 dark:group-hover:fill-emerald-600 ${phase ? "fill-blue-400" : "fill-black"}`}
+                    className={`${phase ? "fill-blue-400" : "fill-black"}`}
                     x="186.056"
                     y="17"
                     width="24"
@@ -58,7 +58,7 @@ export default function InvertPhaseToggle() {
                 />
                 <circle
                     ref={svgCircleRef}
-                    className={`group-hover:stroke-emerald-400 dark:group-hover:stroke-emerald-600 ${phase ? "stroke-blue-400" : "stroke-black"}`}
+                    className={`${phase ? "stroke-blue-400" : "stroke-black"}`}
                     cx="150"
                     cy="150"
                     r="88"
