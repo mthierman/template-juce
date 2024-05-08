@@ -1,9 +1,5 @@
 import * as Juce from "juce-framework-frontend";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import tailwindConfig from "root/tailwind.config";
-import resolveConfig from "tailwindcss/resolveConfig.js";
-
-const tailwind = resolveConfig(tailwindConfig).theme.colors;
 
 export default function InvertPhaseToggle() {
     const toggle = useRef<HTMLInputElement | null>(null);
