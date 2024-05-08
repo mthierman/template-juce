@@ -45,9 +45,7 @@ export default function InvertPhaseToggle() {
 
             <svg
                 ref={svgRef}
-                width="100%"
-                height="100%"
-                className="group rounded-full bg-neutral-300 shadow-lg shadow-black hover:cursor-pointer hover:bg-neutral-200"
+                className="group w-8 rounded-full bg-neutral-300 shadow-lg shadow-black hover:cursor-pointer hover:bg-neutral-200"
                 viewBox="0 0 300 300"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
