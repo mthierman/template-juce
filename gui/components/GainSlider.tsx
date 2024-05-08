@@ -47,9 +47,9 @@ export default function GainSlider() {
                 className="flex-grow cursor-pointer appearance-none bg-transparent focus:outline-none [&::-webkit-slider-runnable-track]:h-6 [&::-webkit-slider-runnable-track]:rounded-xl [&::-webkit-slider-runnable-track]:bg-black [&::-webkit-slider-runnable-track]:p-1 dark:[&::-webkit-slider-runnable-track]:bg-white [&::-webkit-slider-thumb]:h-4
                 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full
                 [&::-webkit-slider-thumb]:bg-white
-                hover:[&::-webkit-slider-thumb]:bg-blue-500
+                hover:[&::-webkit-slider-thumb]:bg-emerald-400
                 dark:[&::-webkit-slider-thumb]:bg-black
-                hover:dark:[&::-webkit-slider-thumb]:bg-blue-500"
+                hover:dark:[&::-webkit-slider-thumb]:bg-emerald-600"
                 ref={gainSlider}
                 type="range"
                 min="0.00"

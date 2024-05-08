@@ -53,7 +53,7 @@ export default function InvertPhaseToggle() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect
-                    className="fill-black group-hover:fill-blue-700"
+                    className="fill-black group-hover:fill-emerald-400 dark:group-hover:fill-emerald-600"
                     ref={svgRectRef}
                     x="186.056"
                     y="17"
@@ -64,7 +64,7 @@ export default function InvertPhaseToggle() {
                     fill="black"
                 />
                 <circle
-                    className="stroke-black group-hover:stroke-blue-700"
+                    className="stroke-black group-hover:stroke-emerald-400 dark:group-hover:stroke-emerald-600"
                     cx="150"
                     cy="150"
                     r="88"
