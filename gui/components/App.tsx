@@ -16,35 +16,10 @@ const logoSvg = {
     light: svg(logo_light),
 };
 
-// const gainSlider = document.getElementById("gain-slider") as HTMLInputElement;
-// const phaseButton = document.getElementById("invert-phase-toggle") as HTMLInputElement;
-
-// gainSlider.addEventListener("input", (e: Event) => {
-//     const target = e.target as HTMLInputElement;
-//     console.log(target.value);
-//     gainState.setNormalisedValue(target.value);
-//     console.log(gainState);
-// });
-
-// gainState.valueChangedEvent.addListener(() => {
-//     gainSlider.value = gainState.getNormalisedValue();
-// });
-
-// phaseButton.addEventListener("click", () => {
-//     phaseState.setValue(true);
-//     console.log(phaseState);
-// });
-
 export default function App() {
     const [theme, setTheme] = useState("dark");
 
-    // setTheme("light");
-
-    useEffect(() => {
-        // setTheme("dark");
-        // changeTheme(theme);
-        changeTheme(theme);
-    }, []);
+    changeTheme(theme);
 
     return (
         <main>

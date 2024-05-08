@@ -9,12 +9,16 @@ export default function GainSlider() {
     const gainState = Juce.getSliderState("gain");
 
     useEffect(() => {
+        gainState.valueChangedEvent.addListener(() => {
+            setGain(gainState.getNormalisedValue());
+        });
         console.log(gainState);
     }, []);
 
     const handleGainChange = (e: SyntheticEvent) => {
         const target = e.target as HTMLInputElement;
         setGain(target.value);
+        gainState.setNormalisedValue(target.value);
     };
 
     const handleGainWheel = (e: SyntheticEvent) => {
