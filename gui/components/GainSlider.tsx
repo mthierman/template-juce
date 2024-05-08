@@ -53,7 +53,6 @@ export default function GainSlider() {
                 onWheel={handleGainWheel}
                 step="0.01"
             />
-            {shiftKey && <div className="uppercase text-green-400">SHIFTKEY ENGAGED!!!!!!!</div>}
         </label>
     );
 }
