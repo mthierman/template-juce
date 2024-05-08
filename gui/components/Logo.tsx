@@ -19,8 +19,12 @@ export default function App() {
     }, []);
 
     return (
-        <div className="">
-            <img className="select-none bg-green-400" src={logo} draggable="false" />
+        <div className="flex basis-full bg-gray-400">
+            <img
+                className="mx-auto h-fit w-full select-none bg-green-400"
+                src={logo}
+                draggable="false"
+            />
         </div>
     );
 }
