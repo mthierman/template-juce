@@ -13,13 +13,19 @@ export default function App() {
     updateTheme(theme);
 
     useEffect(() => {
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+        const themeChange = () => {
+            console.log("themeChange");
             if (theme === "system") {
-                console.log("system theme, switching...");
                 updateTheme(theme);
                 setLogo(loadLogo());
             }
-        });
+        };
+
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", themeChange);
+
+        return window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .removeEventListener("change", themeChange);
     }, []);
 
     return (

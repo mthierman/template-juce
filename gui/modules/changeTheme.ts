@@ -13,7 +13,7 @@ export const loadTheme = () => {
 };
 
 export const loadLogo = () => {
-    return checkDarkMode() ? svg(logo_dark) : svg(logo_light);
+    return document.documentElement.classList.contains("dark") ? svg(logo_dark) : svg(logo_light);
 };
 
 export const updateTheme = (theme: string) => {
@@ -29,8 +29,4 @@ export const updateTheme = (theme: string) => {
     darkMode
         ? document.documentElement.classList.add("dark")
         : document.documentElement.classList.remove("dark");
-};
-
-export const checkDarkMode = () => {
-    return document.documentElement.classList.contains("dark");
 };
