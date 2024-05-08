@@ -21,7 +21,7 @@ export default function InvertPhaseToggle() {
     }, [phase]);
 
     return (
-        <label className="bg-teal-400 flex items-center">
+        <label className="flex items-center">
             <input
                 className="appearance-none"
                 ref={phaseToggle}
