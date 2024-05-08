@@ -17,13 +17,24 @@ const logoSvg = {
 };
 
 export default function App() {
-    const [theme, setTheme] = useState("dark");
+    const [theme, setTheme] = useState(() => {
+        const storedTheme = localStorage.getItem("theme");
+        return storedTheme ? storedTheme : "system";
+    });
 
     changeTheme(theme);
 
     return (
         <main>
-            <img src={theme === "dark" ? logoSvg.dark : logoSvg.light} draggable={false} />
+            <img
+                src={
+                    document.querySelector('meta[name="color-scheme"]')?.getAttribute("content") ===
+                    "dark"
+                        ? logoSvg.dark
+                        : logoSvg.light
+                }
+                draggable={false}
+            />
             <GainSlider />
             <InvertPhaseToggle />
         </main>
