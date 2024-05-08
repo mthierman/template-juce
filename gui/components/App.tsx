@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-
 import "css/index.css";
-import { updateTheme, loadTheme, loadLogo } from "modules/changeTheme";
-
+import { useState, useEffect } from "react";
+import { applyTheme, loadTheme, loadLogo } from "root/gui/modules/theme";
 import GainSlider from "components/GainSlider";
 import InvertPhaseToggle from "components/InvertPhaseToggle";
 
@@ -10,12 +8,12 @@ export default function App() {
     const [theme, setTheme] = useState(loadTheme());
     const [logo, setLogo] = useState(loadLogo());
 
-    updateTheme(theme);
+    applyTheme(theme);
 
     useEffect(() => {
         const themeChange = () => {
             if (theme === "system") {
-                updateTheme(theme);
+                applyTheme(theme);
                 setLogo(loadLogo());
             }
         };

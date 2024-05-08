@@ -1,6 +1,9 @@
 import logo_dark from "images/logo_dark.svg?raw";
 import logo_light from "images/logo_light.svg?raw";
-import svg from "modules/svg";
+
+export const svgUrl = (rawSvg: string) => {
+    return `data:image/svg+xml,${encodeURIComponent(rawSvg)}`;
+};
 
 export const loadTheme = () => {
     const storedTheme = localStorage.getItem("theme");
@@ -13,10 +16,12 @@ export const loadTheme = () => {
 };
 
 export const loadLogo = () => {
-    return document.documentElement.classList.contains("dark") ? svg(logo_dark) : svg(logo_light);
+    return document.documentElement.classList.contains("dark")
+        ? svgUrl(logo_dark)
+        : svgUrl(logo_light);
 };
 
-export const updateTheme = (theme: string) => {
+export const applyTheme = (theme: string) => {
     const darkMode =
         theme === "system"
             ? window.matchMedia("(prefers-color-scheme: dark)").matches
