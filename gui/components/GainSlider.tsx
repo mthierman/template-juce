@@ -12,13 +12,19 @@ export default function GainSlider() {
     const [value, setValue] = useState(sliderState.getNormalisedValue());
     const [properties, setProperties] = useState(sliderState.properties);
 
+    // console.log(sliderState.getScaledValue());
+
     useEffect(() => {
         const valueListenerId = sliderState.valueChangedEvent.addListener(() => {
             setValue(sliderState.getNormalisedValue());
         });
+        const propertiesListenerId = sliderState.propertiesChangedEvent.addListener(() => {
+            setProperties(sliderState.properties);
+        });
 
         return () => {
             sliderState.valueChangedEvent.removeListener(valueListenerId);
+            sliderState.propertiesChangedEvent.removeListener(propertiesListenerId);
         };
     }, []);
 
@@ -55,9 +61,9 @@ export default function GainSlider() {
         sliderState.setNormalisedValue(newValue.toFixed(2));
     };
 
-    // useEffect(() => {
-    //     console.log(gain);
-    // }, [gain]);
+    useEffect(() => {
+        console.log(value);
+    }, [value]);
 
     return (
         <div className="flex gap-1 p-2">
