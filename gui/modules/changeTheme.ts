@@ -1,11 +1,8 @@
 export default (theme: string) => {
-    let isDark: boolean;
-
-    if (theme === "system") {
-        isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    } else {
-        isDark = theme === "dark" ? true : false;
-    }
+    let isDark =
+        theme === "system"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+            : theme === "dark";
 
     localStorage.setItem("theme", theme);
 
