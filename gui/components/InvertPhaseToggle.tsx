@@ -6,12 +6,12 @@ import resolveConfig from "tailwindcss/resolveConfig.js";
 const tailwind = resolveConfig(tailwindConfig).theme.colors;
 
 export default function InvertPhaseToggle() {
-    const invertPhaseToggle = useRef<HTMLInputElement | null>(null);
+    const phaseToggle = useRef<HTMLInputElement | null>(null);
     const [phase, setPhase] = useState(false);
 
     const phaseState = Juce.getToggleState("invertPhase");
 
-    const handleInvertPhaseChange = (e: SyntheticEvent) => {
+    const handlePhaseChange = (e: SyntheticEvent) => {
         const target = e.target as HTMLInputElement;
         setPhase(target.checked);
     };
@@ -24,11 +24,10 @@ export default function InvertPhaseToggle() {
         <label className="flex">
             <input
                 className="appearance-none"
-                ref={invertPhaseToggle}
-                id="invert-phase-toggle"
+                ref={phaseToggle}
                 type="checkbox"
                 checked={phase}
-                onChange={handleInvertPhaseChange}
+                onChange={handlePhaseChange}
             />
 
             <svg
