@@ -1,5 +1,5 @@
 export default (theme: string) => {
-    let isDark =
+    let darkMode =
         theme === "system"
             ? window.matchMedia("(prefers-color-scheme: dark)").matches
             : theme === "dark";
@@ -8,9 +8,9 @@ export default (theme: string) => {
 
     document
         .querySelector('meta[name="color-scheme"]')
-        ?.setAttribute("content", isDark ? "dark" : "light");
+        ?.setAttribute("content", darkMode ? "dark" : "light");
 
-    isDark
+    darkMode
         ? document.documentElement.classList.add("dark")
         : document.documentElement.classList.remove("dark");
 };
