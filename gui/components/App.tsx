@@ -1,6 +1,4 @@
-import { SyntheticEvent, useEffect, useRef, useState } from "react";
-
-import * as Juce from "juce-framework-frontend";
+import { useState, useEffect } from "react";
 
 import "css/index.css";
 import svg from "modules/svg";
@@ -16,17 +14,42 @@ const logoSvg = {
     light: svg(logo_light),
 };
 
+const isDark = () => {
+    return document.querySelector('meta[name="color-scheme"]')?.getAttribute("content") === "dark";
+};
+
 export default function App() {
     const [theme, setTheme] = useState(() => {
         const storedTheme = localStorage.getItem("theme");
-        return storedTheme ? storedTheme : "system";
+        if (storedTheme) {
+            return storedTheme;
+        } else {
+            localStorage.setItem("theme", "system");
+            return "system";
+        }
     });
+    const [logo, setLogo] = useState(isDark() ? logoSvg.dark : logoSvg.light);
 
-    const darkMode = changeTheme(theme);
+    changeTheme(
+        theme === "system"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+            : theme === "dark",
+    );
+
+    useEffect(() => {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+            changeTheme(
+                theme === "system"
+                    ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                    : theme === "dark",
+            );
+            setLogo(isDark() ? logoSvg.dark : logoSvg.light);
+        });
+    }, []);
 
     return (
         <main>
-            <img src={darkMode ? logoSvg.dark : logoSvg.light} draggable={false} />
+            <img src={logo} draggable={false} />
             <GainSlider />
             <InvertPhaseToggle />
         </main>

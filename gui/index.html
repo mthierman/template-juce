@@ -7,49 +7,6 @@
         <link rel="icon" href="/favicon.ico" />
         <title>WebViewAudioPlugin</title>
         <script type="module" src="index.tsx"></script>
-        <!-- <script>
-            const setTheme = (dark) => {
-                document
-                    .querySelector('meta[name="color-scheme"]')
-                    ?.setAttribute("content", dark ? "dark" : "light");
-
-                dark
-                    ? document.documentElement.classList.add("dark")
-                    : document.documentElement.classList.remove("dark");
-            };
-
-            const theme = localStorage.getItem("theme");
-
-            if (theme) {
-                switch (theme) {
-                    case "system": {
-                        setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-                        break;
-                    }
-                    case "dark": {
-                        setTheme(true);
-                        break;
-                    }
-                    case "light": {
-                        setTheme(false);
-                        break;
-                    }
-                }
-            } else {
-                localStorage.setItem("theme", "system");
-            }
-
-            window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-                const theme = localStorage.getItem("theme");
-                const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-                if (theme) {
-                    if (theme === "system") {
-                        setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-                    }
-                }
-            });
-        </script> -->
     </head>
     <body class="size-full bg-blue-50 dark:bg-blue-950">
         <div id="root" class="size-full"></div>
