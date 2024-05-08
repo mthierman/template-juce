@@ -1,6 +1,5 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import * as Juce from "juce-framework-frontend";
-
 import { svgUrl } from "modules/theme";
 import phase_toggle from "images/phase_toggle.svg?raw";
 
@@ -34,7 +33,7 @@ export default function InvertPhaseToggle() {
     }, [phase]);
 
     return (
-        <label>
+        <div className="flex bg-red-400">
             <input
                 className="appearance-none"
                 ref={invertPhaseToggle}
@@ -46,8 +45,8 @@ export default function InvertPhaseToggle() {
 
             <svg
                 ref={svgRef}
-                width="100"
-                height="100"
+                width="100%"
+                height="100%"
                 className="group rounded-full bg-neutral-300 shadow-lg shadow-black hover:cursor-pointer hover:bg-neutral-200"
                 viewBox="0 0 300 300"
                 fill="none"
@@ -71,6 +70,6 @@ export default function InvertPhaseToggle() {
                     strokeWidth="24"
                 />
             </svg>
-        </label>
+        </div>
     );
 }

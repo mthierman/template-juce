@@ -1,5 +1,6 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import * as Juce from "juce-framework-frontend";
+import InvertPhaseToggle from "components/InvertPhaseToggle";
 
 export default function GainSlider() {
     const gainSlider = useRef<HTMLInputElement | null>(null);
@@ -35,7 +36,8 @@ export default function GainSlider() {
     }, [gain]);
 
     return (
-        <div className="flex select-none gap-2 p-8">
+        <div className="flex flex-grow select-none place-items-center gap-2 p-8">
+            <InvertPhaseToggle />
             <input
                 className="flex-grow cursor-pointer appearance-none bg-transparent focus:outline-none [&::-webkit-slider-runnable-track]:h-6 [&::-webkit-slider-runnable-track]:rounded-xl [&::-webkit-slider-runnable-track]:bg-black [&::-webkit-slider-runnable-track]:p-1 dark:[&::-webkit-slider-runnable-track]:bg-white [&::-webkit-slider-thumb]:h-4
                 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full

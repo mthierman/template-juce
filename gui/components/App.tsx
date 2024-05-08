@@ -2,7 +2,6 @@ import "css/index.css";
 import { useState, useEffect } from "react";
 import { applyTheme, loadTheme, loadLogo } from "root/gui/modules/theme";
 import GainSlider from "components/GainSlider";
-import InvertPhaseToggle from "components/InvertPhaseToggle";
 
 export default function App() {
     const [theme, setTheme] = useState(loadTheme());
@@ -31,7 +30,6 @@ export default function App() {
         <main className="flex flex-col">
             <img className="select-none p-8" src={logo} draggable="false" />
             <GainSlider />
-            <InvertPhaseToggle />
         </main>
     );
 }
