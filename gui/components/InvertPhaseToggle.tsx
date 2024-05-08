@@ -31,7 +31,7 @@ export default function InvertPhaseToggle() {
             />
 
             <svg
-                className={`w-6 cursor-pointer rounded-full shadow-lg shadow-black outline-dotted outline-2 outline-transparent hover:outline-blue-400 ${phase ? "bg-blue-800" : "bg-gray-400"}`}
+                className={`w-6 cursor-pointer rounded-full shadow-lg shadow-black outline-dotted outline-2 outline-transparent hover:outline-emerald-400 ${phase ? "bg-blue-900" : "bg-white"}`}
                 viewBox="0 0 300 300"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
