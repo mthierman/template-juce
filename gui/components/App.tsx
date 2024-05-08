@@ -29,7 +29,7 @@ export default function App() {
 
     return (
         <main>
-            <img src={logo} draggable={false} />
+            <img className="select-none" src={logo} draggable="false" />
             <GainSlider />
             <InvertPhaseToggle />
         </main>

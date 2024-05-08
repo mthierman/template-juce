@@ -41,10 +41,10 @@ export default function GainSlider() {
     }, [gain]);
 
     return (
-        <label>
+        <label className="select-none">
             -20.0 dB
             <input
-                className="[&::-webkit-slider-runnable-track]:bg-black dark:[&::-webkit-slider-runnable-track]:bg-white [&::-webkit-slider-thumb]:bg-white hover:[&::-webkit-slider-thumb]:bg-blue-500 dark:[&::-webkit-slider-thumb]:bg-black hover:dark:[&::-webkit-slider-thumb]:bg-blue-500"
+                className="flex-grow cursor-pointer appearance-none bg-transparent focus:outline-none [&::-webkit-slider-runnable-track]:bg-black dark:[&::-webkit-slider-runnable-track]:bg-white [&::-webkit-slider-thumb]:bg-white hover:[&::-webkit-slider-thumb]:bg-blue-500 dark:[&::-webkit-slider-thumb]:bg-black hover:dark:[&::-webkit-slider-thumb]:bg-blue-500"
                 ref={gainSlider}
                 type="range"
                 min="0.00"

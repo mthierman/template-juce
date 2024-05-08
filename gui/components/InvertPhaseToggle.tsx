@@ -36,6 +36,7 @@ export default function InvertPhaseToggle() {
     return (
         <label>
             <input
+                className="appearance-none"
                 ref={invertPhaseToggle}
                 id="invert-phase-toggle"
                 type="checkbox"
