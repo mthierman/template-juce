@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import "css/index.css";
 import svg from "modules/svg";
-import changeTheme from "modules/changeTheme";
+import { checkDarkMode, updateTheme } from "modules/changeTheme";
 import logo_dark from "images/logo_dark.svg?raw";
 import logo_light from "images/logo_light.svg?raw";
 
@@ -12,10 +12,6 @@ import InvertPhaseToggle from "components/InvertPhaseToggle";
 const logoSvg = {
     dark: svg(logo_dark),
     light: svg(logo_light),
-};
-
-const isDark = () => {
-    return document.querySelector('meta[name="color-scheme"]')?.getAttribute("content") === "dark";
 };
 
 export default function App() {
@@ -28,9 +24,9 @@ export default function App() {
             return "system";
         }
     });
-    const [logo, setLogo] = useState(isDark() ? logoSvg.dark : logoSvg.light);
+    const [logo, setLogo] = useState(checkDarkMode() ? logoSvg.dark : logoSvg.light);
 
-    changeTheme(
+    updateTheme(
         theme === "system"
             ? window.matchMedia("(prefers-color-scheme: dark)").matches
             : theme === "dark",
@@ -38,12 +34,12 @@ export default function App() {
 
     useEffect(() => {
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-            changeTheme(
+            updateTheme(
                 theme === "system"
                     ? window.matchMedia("(prefers-color-scheme: dark)").matches
                     : theme === "dark",
             );
-            setLogo(isDark() ? logoSvg.dark : logoSvg.light);
+            setLogo(checkDarkMode() ? logoSvg.dark : logoSvg.light);
         });
     }, []);
 
