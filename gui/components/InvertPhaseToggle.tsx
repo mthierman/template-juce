@@ -21,7 +21,7 @@ export default function InvertPhaseToggle() {
     }, [phase]);
 
     return (
-        <label className="flex">
+        <label className="bg-teal-400 flex items-center">
             <input
                 className="appearance-none"
                 ref={phaseToggle}
@@ -31,7 +31,7 @@ export default function InvertPhaseToggle() {
             />
 
             <svg
-                className={`w-8 cursor-pointer rounded-full shadow-lg shadow-black outline-dotted outline-2 outline-transparent hover:outline-blue-400 ${phase ? "bg-blue-800" : "bg-gray-400"}`}
+                className={`w-6 cursor-pointer rounded-full shadow-lg shadow-black outline-dotted outline-2 outline-transparent hover:outline-blue-400 ${phase ? "bg-blue-800" : "bg-gray-400"}`}
                 viewBox="0 0 300 300"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">

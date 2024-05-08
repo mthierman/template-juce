@@ -28,8 +28,8 @@ Editor::Editor(Processor& processor)
 #endif
 
     setResizable(true, true);
-    setResizeLimits(400, 300, 800, 600);
-    setSize(800, 600);
+    // setResizeLimits(400, 300, 800, 600);
+    setSize(400, 300);
 }
 
 Editor::~Editor() {}

@@ -1,11 +1,11 @@
-import "css/index.css";
-import { useState, useEffect } from "react";
-import { applyTheme, loadTheme, loadLogo } from "root/gui/modules/theme";
 import GainSlider from "components/GainSlider";
+import Logo from "components/Logo";
+import "css/index.css";
+import { useEffect, useState } from "react";
+import { applyTheme, loadTheme } from "root/gui/modules/theme";
 
 export default function App() {
     const [theme, setTheme] = useState(loadTheme());
-    const [logo, setLogo] = useState(loadLogo());
 
     applyTheme(theme);
 
@@ -13,7 +13,6 @@ export default function App() {
         const themeChange = () => {
             if (theme === "system") {
                 applyTheme(theme);
-                setLogo(loadLogo());
             }
         };
 
@@ -27,9 +26,9 @@ export default function App() {
     }, []);
 
     return (
-        <main className="flex flex-col">
-            <img className="select-none p-8" src={logo} draggable="false" />
+        <>
+            <Logo />
             <GainSlider />
-        </main>
+        </>
     );
 }
