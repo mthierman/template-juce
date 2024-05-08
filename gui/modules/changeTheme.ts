@@ -16,7 +16,12 @@ export const loadLogo = () => {
     return checkDarkMode() ? svg(logo_dark) : svg(logo_light);
 };
 
-export const updateTheme = (darkMode: boolean) => {
+export const updateTheme = (theme: string) => {
+    const darkMode =
+        theme === "system"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+            : theme === "dark";
+
     document
         .querySelector('meta[name="color-scheme"]')
         ?.setAttribute("content", darkMode ? "dark" : "light");
