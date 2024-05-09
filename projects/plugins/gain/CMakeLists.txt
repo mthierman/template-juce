@@ -1,5 +1,5 @@
 project(
-    Plugin
+    Gain
     VERSION 0.0.0
 )
 
