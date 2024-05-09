@@ -56,7 +56,7 @@ target_compile_definitions(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PRIVATE BinaryData
+    PRIVATE ${PROJECT_NAME}_BinaryData
             juce::juce_audio_utils
             juce::juce_gui_extra
     PUBLIC jwv::features
@@ -66,7 +66,7 @@ target_link_libraries(
            juce::juce_recommended_warning_flags
 )
 
-set(GUI_OUTPUT
+set(VITE_OUTPUT
     "${CMAKE_BINARY_DIR}/plugins/gain/index.html"
     "${CMAKE_BINARY_DIR}/plugins/gain/index.css"
     "${CMAKE_BINARY_DIR}/plugins/gain/index.js"
@@ -74,22 +74,22 @@ set(GUI_OUTPUT
 )
 
 juce_add_binary_data(
-    BinaryData
+    ${PROJECT_NAME}_BinaryData
     HEADER_NAME
     "BinaryData.h"
     NAMESPACE
     "BinaryData"
     SOURCES
-    ${GUI_OUTPUT}
+    ${VITE_OUTPUT}
 )
 
 add_custom_target(
     ${PROJECT_NAME}_Vite
     COMMAND pnpm run build
-    BYPRODUCTS ${GUI_OUTPUT}
+    BYPRODUCTS ${VITE_OUTPUT}
 )
 
 add_dependencies(
-    BinaryData
+    ${PROJECT_NAME}_BinaryData
     ${PROJECT_NAME}_Vite
 )
