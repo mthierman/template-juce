@@ -1,24 +1,24 @@
 project(
-    JuceWebViewApp
+    GuiApp
     VERSION 0.0.1
 )
 
 juce_add_gui_app(
     ${PROJECT_NAME}
-    ICON_BIG
-    "${PROJECT_SOURCE_DIR}/data/icon.png"
-    ICON_SMALL
-    "${PROJECT_SOURCE_DIR}/data/icon.png"
-    COMPANY_NAME
-    ${PROJECT_NAME}
     PRODUCT_NAME
     ${PROJECT_NAME}
+    COMPANY_NAME
+    ${PROJECT_NAME}
+    ICON_BIG
+    "data/icon.png"
+    ICON_SMALL
+    "data/icon.png"
 )
 
 target_sources(
     ${PROJECT_NAME}
-    PRIVATE Main.cpp
-            MainComponent.cpp
+    PRIVATE "src/Main.cpp"
+            "src/MainComponent.cpp"
 )
 
 target_compile_definitions(
