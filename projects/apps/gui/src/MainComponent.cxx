@@ -2,13 +2,13 @@
 
 MainComponent::MainComponent() { setSize(600, 400); }
 
-void MainComponent::paint(juce::Graphics& g)
+auto MainComponent::paint(juce::Graphics& graphics) -> void
 {
-    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
+    graphics.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 
-    g.setFont(juce::FontOptions(16.0f));
-    g.setColour(juce::Colours::white);
-    g.drawText("Hello World!", getLocalBounds(), juce::Justification::centred, true);
+    graphics.setFont(juce::FontOptions(16.0f));
+    graphics.setColour(juce::Colours::white);
+    graphics.drawText("Hello World!", getLocalBounds(), juce::Justification::centred, true);
 }
 
-void MainComponent::resized() {}
+auto MainComponent::resized() -> void {}

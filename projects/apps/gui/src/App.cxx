@@ -1,33 +1,39 @@
 #include "MainComponent.hxx"
 
-class GuiAppApplication final : public juce::JUCEApplication
+struct GuiAppApplication final : public juce::JUCEApplication
 {
-  public:
     GuiAppApplication() {}
 
-    const juce::String getApplicationName() override { return JUCE_APPLICATION_NAME_STRING; }
-    const juce::String getApplicationVersion() override { return JUCE_APPLICATION_VERSION_STRING; }
-    bool moreThanOneInstanceAllowed() override { return true; }
+    auto getApplicationName() -> const juce::String override
+    {
+        return JUCE_APPLICATION_NAME_STRING;
+    }
 
-    void initialise(const juce::String& commandLine) override
+    auto getApplicationVersion() -> const juce::String override
+    {
+        return JUCE_APPLICATION_VERSION_STRING;
+    }
+
+    auto moreThanOneInstanceAllowed() -> bool override { return true; }
+
+    auto initialise(const juce::String& commandLine) -> void override
     {
         juce::ignoreUnused(commandLine);
 
         mainWindow.reset(new MainWindow(getApplicationName()));
     }
 
-    void shutdown() override { mainWindow = nullptr; }
+    auto shutdown() -> void override { mainWindow = nullptr; }
 
-    void systemRequestedQuit() override { quit(); }
+    auto systemRequestedQuit() -> void override { quit(); }
 
-    void anotherInstanceStarted(const juce::String& commandLine) override
+    auto anotherInstanceStarted(const juce::String& commandLine) -> void override
     {
         juce::ignoreUnused(commandLine);
     }
 
-    class MainWindow final : public juce::DocumentWindow
+    struct MainWindow final : public juce::DocumentWindow
     {
-      public:
         explicit MainWindow(juce::String name)
             : DocumentWindow(name,
                              juce::Desktop::getInstance().getDefaultLookAndFeel().findColour(
@@ -47,7 +53,7 @@ class GuiAppApplication final : public juce::JUCEApplication
             setVisible(true);
         }
 
-        void closeButtonPressed() override
+        auto closeButtonPressed() -> void override
         {
             JUCEApplication::getInstance()->systemRequestedQuit();
         }
