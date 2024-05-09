@@ -5,14 +5,14 @@ project(
 
 juce_add_plugin(
     ${PROJECT_NAME}
-    ICON_BIG
-    "data/icon.png"
-    ICON_SMALL
-    "data/icon.png"
     PRODUCT_NAME
     ${PROJECT_NAME}
     COMPANY_NAME
     ${PROJECT_NAME}
+    ICON_BIG
+    "data/icon.png"
+    ICON_SMALL
+    "data/icon.png"
     PLUGIN_MANUFACTURER_CODE
     Wvap
     PLUGIN_CODE
