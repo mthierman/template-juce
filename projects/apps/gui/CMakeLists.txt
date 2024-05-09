@@ -20,6 +20,7 @@ juce_add_gui_app(
 target_sources(
     ${PROJECT_NAME}
     PRIVATE "src/App.cxx"
+            "src/Browser.cxx"
             "src/MainComponent.cxx"
 )
 
@@ -30,6 +31,7 @@ target_compile_definitions(
             JUCE_USE_CURL=0
             JUCE_APPLICATION_NAME_STRING="$<TARGET_PROPERTY:${PROJECT_NAME},JUCE_PRODUCT_NAME>"
             JUCE_APPLICATION_VERSION_STRING="$<TARGET_PROPERTY:${PROJECT_NAME},JUCE_VERSION>"
+            $<$<CONFIG:Debug>:HOT_RELOAD=1>
 )
 
 target_link_libraries(
