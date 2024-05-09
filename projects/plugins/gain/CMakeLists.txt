@@ -3,16 +3,17 @@ project(
     VERSION 0.0.0
 )
 
-add_custom_target(
-    vite_build
-    COMMAND pnpm run build
-)
-
 set(GUI_OUTPUT
     "${CMAKE_BINARY_DIR}/plugins/gain/index.html"
     "${CMAKE_BINARY_DIR}/plugins/gain/index.css"
     "${CMAKE_BINARY_DIR}/plugins/gain/index.js"
     "${CMAKE_BINARY_DIR}/plugins/gain/favicon.ico"
+)
+
+add_custom_target(
+    vite_build
+    COMMAND pnpm run build
+    BYPRODUCTS ${GUI_OUTPUT}
 )
 
 juce_add_binary_data(
