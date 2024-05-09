@@ -1,6 +1,6 @@
 project(
     ConsoleApp
-    VERSION 0.0.1
+    VERSION 0.0.0
 )
 
 juce_add_console_app(

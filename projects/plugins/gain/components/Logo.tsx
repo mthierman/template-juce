@@ -1,5 +1,5 @@
+import { loadLogo } from "gain/modules/theme";
 import { useEffect, useState } from "react";
-import { loadLogo } from "root/gui/modules/theme";
 
 export default function App() {
     const [logo, setLogo] = useState(loadLogo());

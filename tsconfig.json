@@ -6,13 +6,7 @@
         "baseUrl": "./",
         "paths": {
             "root/*": ["./*"],
-            "gui/*": ["gui/*"],
-            "components/*": ["gui/components/*"],
-            "css/*": ["gui/css/*"],
-            "images/*": ["gui/images/*"],
-            "modules/*": ["gui/modules/*"],
-            "public/*": ["gui/public/*"],
-            "src/*": ["src/*"]
+            "gain/*": ["projects/plugins/gain/*"]
         },
         "lib": ["ESNext", "DOM", "DOM.Iterable"],
         "jsx": "react-jsx",
@@ -24,5 +18,5 @@
         "skipLibCheck": true,
         "types": ["vite/client"]
     },
-    "include": ["gui", "**/*.config.ts"]
+    "include": ["projects/plugins/gain", "**/*.config.ts"]
 }

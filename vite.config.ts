@@ -4,9 +4,9 @@ import { CommonServerOptions, UserConfig, defineConfig } from "vite";
 
 const userConfig: UserConfig = {
     plugins: [react()],
-    root: resolve("gui"),
+    root: resolve("projects/plugins/gain"),
     build: {
-        outDir: resolve("build/gui"),
+        outDir: resolve("build/plugins/gain"),
         emptyOutDir: true,
         rollupOptions: {
             output: {
@@ -19,13 +19,7 @@ const userConfig: UserConfig = {
     resolve: {
         alias: {
             root: resolve("./"),
-            gui: resolve("gui"),
-            components: resolve("gui/components"),
-            css: resolve("gui/css"),
-            images: resolve("gui/images"),
-            modules: resolve("gui/modules"),
-            public: resolve("gui/public"),
-            src: resolve("src"),
+            gain: resolve("projects/plugins/gain"),
         },
     },
 };

@@ -1,5 +1,5 @@
-import logo_dark from "images/logo_dark.svg?raw";
-import logo_light from "images/logo_light.svg?raw";
+import logo_dark from "gain/images/logo_dark.svg?raw";
+import logo_light from "gain/images/logo_light.svg?raw";
 
 export const svgUrl = (rawSvg: string) => {
     return `data:image/svg+xml,${encodeURIComponent(rawSvg)}`;

@@ -1,8 +1,8 @@
-import GainSlider from "components/GainSlider";
-import Logo from "components/Logo";
-import "css/index.css";
+import GainSlider from "gain/components/GainSlider";
+import Logo from "gain/components/Logo";
+import "gain/css/index.css";
+import { applyTheme, loadTheme } from "gain/modules/theme";
 import { useEffect, useState } from "react";
-import { applyTheme, loadTheme } from "root/gui/modules/theme";
 
 export default function App() {
     const [theme, setTheme] = useState(loadTheme());

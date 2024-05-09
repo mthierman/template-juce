@@ -1,33 +1,18 @@
 project(
     Plugin
-    VERSION 0.0.1
-)
-
-file(
-    GLOB_RECURSE
-    GUI_SOURCES
-    "gui"
-)
-
-set(GUI_OUTPUT
-    "${PROJECT_BINARY_DIR}/gui/index.html"
-    "${PROJECT_BINARY_DIR}/gui/index.css"
-    "${PROJECT_BINARY_DIR}/gui/index.js"
-    "${PROJECT_BINARY_DIR}/gui/favicon.ico"
-    # "${PROJECT_BINARY_DIR}/gui/logo_dark.svg" "${PROJECT_BINARY_DIR}/gui/logo_light.svg"
-    # "${PROJECT_BINARY_DIR}/gui/phase.svg"
-)
-
-add_custom_command(
-    OUTPUT ${GUI_OUTPUT}
-    COMMAND pnpm run build
-    DEPENDS ${GUI_SOURCES}
+    VERSION 0.0.0
 )
 
 add_custom_target(
-    Vite
-    ALL
-    DEPENDS ${GUI_OUTPUT}
+    vite_build
+    COMMAND pnpm run build
+)
+
+set(GUI_OUTPUT
+    "${CMAKE_BINARY_DIR}/plugins/gain/index.html"
+    "${CMAKE_BINARY_DIR}/plugins/gain/index.css"
+    "${CMAKE_BINARY_DIR}/plugins/gain/index.js"
+    "${CMAKE_BINARY_DIR}/plugins/gain/favicon.ico"
 )
 
 juce_add_binary_data(
@@ -43,9 +28,9 @@ juce_add_binary_data(
 juce_add_plugin(
     ${PROJECT_NAME}
     ICON_BIG
-    "${PROJECT_SOURCE_DIR}/gui/public/icon.png"
+    "data/icon.png"
     ICON_SMALL
-    "${PROJECT_SOURCE_DIR}/gui/public/icon.png"
+    "data/icon.png"
     PRODUCT_NAME
     ${PROJECT_NAME}
     COMPANY_NAME
@@ -76,20 +61,10 @@ juce_add_plugin(
 
 target_sources(
     ${PROJECT_NAME}
-    PRIVATE "${PROJECT_SOURCE_DIR}/src/Browser.cxx"
-            "${PROJECT_SOURCE_DIR}/src/Editor.cxx"
-            "${PROJECT_SOURCE_DIR}/src/Processor.cxx"
-            "${PROJECT_SOURCE_DIR}/src/Resource.cxx"
-    PRIVATE FILE_SET
-            HEADERS
-            BASE_DIRS
-            "${PROJECT_SOURCE_DIR}/src"
-            FILES
-            "${PROJECT_SOURCE_DIR}/src/Browser.hxx"
-            "${PROJECT_SOURCE_DIR}/src/Editor.hxx"
-            "${PROJECT_SOURCE_DIR}/src/Global.hxx"
-            "${PROJECT_SOURCE_DIR}/src/Processor.hxx"
-            "${PROJECT_SOURCE_DIR}/src/Resource.hxx"
+    PRIVATE "src/Browser.cxx"
+            "src/Editor.cxx"
+            "src/Processor.cxx"
+            "src/Resource.cxx"
 )
 
 target_compile_definitions(
@@ -115,5 +90,5 @@ target_link_libraries(
 
 add_dependencies(
     BinaryData
-    Vite
+    vite_build
 )

@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-    content: ["./gui/**/*.{html,js,jsx,ts,tsx}"],
+    content: ["./projects/**/*.{html,js,jsx,ts,tsx}"],
     darkMode: "selector",
     theme: {
         fontFamily: {
