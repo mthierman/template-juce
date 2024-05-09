@@ -13,17 +13,17 @@
 */
 class MainComponent final : public juce::Component
 {
-public:
+  public:
     //==============================================================================
     MainComponent();
 
     //==============================================================================
-    void paint (juce::Graphics&) override;
+    void paint(juce::Graphics&) override;
     void resized() override;
 
-private:
+  private:
     //==============================================================================
     // Your private member variables go here...
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

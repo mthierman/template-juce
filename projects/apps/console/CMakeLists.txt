@@ -11,7 +11,7 @@ juce_add_console_app(
 
 target_sources(
     ${PROJECT_NAME}
-    PRIVATE "src/Main.cpp"
+    PRIVATE "src/App.cxx"
 )
 
 target_compile_definitions(

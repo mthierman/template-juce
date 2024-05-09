@@ -17,8 +17,8 @@ juce_add_gui_app(
 
 target_sources(
     ${PROJECT_NAME}
-    PRIVATE "src/Main.cpp"
-            "src/MainComponent.cpp"
+    PRIVATE "src/App.cxx"
+            "src/MainComponent.cxx"
 )
 
 target_compile_definitions(
