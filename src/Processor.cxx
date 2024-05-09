@@ -10,20 +10,19 @@ Processor::Processor()
                          .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
                          ),
-      m_parameters{*this,
-                   nullptr,
-                   juce::Identifier("JuceWebView"),
-                   {std::make_unique<juce::AudioParameterFloat>(
-                        m_parameterMap.at(Parameters::gain).first,
-                        m_parameterMap.at(Parameters::gain).second,
-                        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f),
-                    std::make_unique<juce::AudioParameterBool>(
-                        m_parameterMap.at(Parameters::invertPhase).first,
-                        m_parameterMap.at(Parameters::invertPhase).second, false)}}
+      m_apvts{
+          *this,
+          nullptr,
+          juce::Identifier("JuceWebView"),
+          {std::make_unique<juce::AudioParameterFloat>(
+               m_parameters.at(Parameters::gain).first, m_parameters.at(Parameters::gain).second,
+               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f),
+           std::make_unique<juce::AudioParameterBool>(
+               m_parameters.at(Parameters::invertPhase).first,
+               m_parameters.at(Parameters::invertPhase).second, false)}}
 {
-    m_gainParameter = m_parameters.getRawParameterValue(m_parameterMap.at(Parameters::gain).first);
-    m_phaseParameter =
-        m_parameters.getRawParameterValue(m_parameterMap.at(Parameters::invertPhase).first);
+    m_gainParameter = m_apvts.getRawParameterValue(m_parameters.at(Parameters::gain).first);
+    m_phaseParameter = m_apvts.getRawParameterValue(m_parameters.at(Parameters::invertPhase).first);
 }
 
 Processor::~Processor() {}
@@ -68,6 +67,7 @@ auto Processor::setCurrentProgram(int index) -> void { juce::ignoreUnused(index)
 auto Processor::getProgramName(int index) -> const juce::String
 {
     juce::ignoreUnused(index);
+
     return {};
 }
 
@@ -79,6 +79,7 @@ auto Processor::changeProgramName(int index, const juce::String& newName) -> voi
 auto Processor::prepareToPlay(double sampleRate, int samplesPerBlock) -> void
 {
     juce::ignoreUnused(sampleRate, samplesPerBlock);
+
     auto phase{*m_phaseParameter < 0.5f ? 1.0f : -1.0f};
     m_previousGain = *m_gainParameter * phase;
 }
@@ -89,14 +90,19 @@ auto Processor::isBusesLayoutSupported(const BusesLayout& layouts) const -> bool
 {
 #if JucePlugin_IsMidiEffect
     juce::ignoreUnused(layouts);
+
     return true;
 #else
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono() &&
         layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
+    {
         return false;
+    }
 #if !JucePlugin_IsSynth
     if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
+    {
         return false;
+    }
 #endif
     return true;
 #endif
@@ -141,7 +147,7 @@ auto Processor::createEditor() -> juce::AudioProcessorEditor* { return new Edito
 
 auto Processor::getStateInformation(juce::MemoryBlock& destData) -> void
 {
-    auto state{m_parameters.copyState()};
+    auto state{m_apvts.copyState()};
     auto xml{state.createXml()};
     copyXmlToBinary(*xml, destData);
 }
@@ -152,9 +158,9 @@ auto Processor::setStateInformation(const void* data, int sizeInBytes) -> void
 
     if (xmlState.get() != nullptr)
     {
-        if (xmlState->hasTagName(m_parameters.state.getType()))
+        if (xmlState->hasTagName(m_apvts.state.getType()))
         {
-            m_parameters.replaceState(juce::ValueTree::fromXml(*xmlState));
+            m_apvts.replaceState(juce::ValueTree::fromXml(*xmlState));
         }
     }
 }

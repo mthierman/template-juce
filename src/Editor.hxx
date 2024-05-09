@@ -40,13 +40,12 @@ struct Editor final : public juce::AudioProcessorEditor
                                   juce::URL{"http://localhost:5173/"}.getOrigin())};
 
     juce::WebSliderParameterAttachment m_gainAttachment{
-        *m_processor.m_parameters.getParameter(
-            m_processor.m_parameterMap.at(Parameters::gain).first),
-        m_gainRelay, m_processor.m_parameters.undoManager};
+        *m_processor.m_apvts.getParameter(m_processor.m_parameters.at(Parameters::gain).first),
+        m_gainRelay, m_processor.m_apvts.undoManager};
     juce::WebToggleButtonParameterAttachment m_phaseAttachment{
-        *m_processor.m_parameters.getParameter(
-            m_processor.m_parameterMap.at(Parameters::invertPhase).first),
-        m_phaseRelay, m_processor.m_parameters.undoManager};
+        *m_processor.m_apvts.getParameter(
+            m_processor.m_parameters.at(Parameters::invertPhase).first),
+        m_phaseRelay, m_processor.m_apvts.undoManager};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Editor)
 };

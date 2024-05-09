@@ -38,10 +38,10 @@ struct Processor final : public juce::AudioProcessor
     auto getStateInformation(juce::MemoryBlock& destData) -> void override;
     auto setStateInformation(const void* data, int sizeInBytes) -> void override;
 
-    std::map<Parameters, std::pair<std::string, std::string>> m_parameterMap{
+    std::map<Parameters, std::pair<juce::String, juce::String>> m_parameters{
         {Parameters::gain, std::make_pair("gain", "Gain")},
         {Parameters::invertPhase, std::make_pair("invertPhase", "Invert Phase")}};
-    juce::AudioProcessorValueTreeState m_parameters;
+    juce::AudioProcessorValueTreeState m_apvts;
     float m_previousGain{};
     std::atomic<float>* m_phaseParameter{nullptr};
     std::atomic<float>* m_gainParameter{nullptr};
