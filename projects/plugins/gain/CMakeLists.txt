@@ -74,11 +74,6 @@ juce_add_plugin(
     TRUE
 )
 
-target_compile_features(
-    ${PROJECT_NAME}
-    PRIVATE cxx_std_23
-)
-
 target_sources(
     ${PROJECT_NAME}
     PRIVATE "${PROJECT_SOURCE_DIR}/src/Browser.cxx"
@@ -111,14 +106,11 @@ target_link_libraries(
     PRIVATE BinaryData
             juce::juce_audio_utils
             juce::juce_gui_extra
-    PUBLIC juce::juce_recommended_config_flags
+    PUBLIC jwv::features
+           jwv::definitions
+           juce::juce_recommended_config_flags
            juce::juce_recommended_lto_flags
            juce::juce_recommended_warning_flags
-)
-
-target_compile_definitions(
-    ${PROJECT_NAME}
-    PRIVATE _SILENCE_CXX23_ALIGNED_STORAGE_DEPRECATION_WARNING
 )
 
 add_dependencies(
