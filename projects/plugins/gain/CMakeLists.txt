@@ -84,12 +84,12 @@ juce_add_binary_data(
 )
 
 add_custom_target(
-    vite_build
+    ${PROJECT_NAME}_Vite
     COMMAND pnpm run build
     BYPRODUCTS ${GUI_OUTPUT}
 )
 
 add_dependencies(
     BinaryData
-    vite_build
+    ${PROJECT_NAME}_Vite
 )
