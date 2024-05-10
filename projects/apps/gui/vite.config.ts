@@ -1,10 +1,12 @@
 import react from "@vitejs/plugin-react-swc";
-import { resolve } from "path";
+import { join, resolve } from "path";
 import { CommonServerOptions, UserConfig, defineConfig } from "vite";
+
+const project = resolve("projects/apps/gui");
 
 const userConfig: UserConfig = {
     plugins: [react()],
-    root: resolve("projects/apps/gui"),
+    root: project,
     build: {
         outDir: resolve("build/apps/gui"),
         emptyOutDir: true,
@@ -18,10 +20,13 @@ const userConfig: UserConfig = {
     },
     resolve: {
         alias: {
-            root: resolve("./"),
-            apps: resolve("projects/apps"),
-            plugins: resolve("projects/plugins"),
-            gain: resolve("projects/plugins/gain"),
+            components: join(project, "components"),
+            css: join(project, "css"),
+            data: join(project, "data"),
+            images: join(project, "images"),
+            modules: join(project, "modules"),
+            public: join(project, "public"),
+            src: join(project, "src"),
         },
     },
 };

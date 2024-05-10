@@ -4,9 +4,6 @@
         "lib": ["ESNext", "DOM", "DOM.Iterable"],
         "jsx": "react-jsx",
         "baseUrl": "./",
-        "paths": {
-            "components/*": ["components/*"]
-        },
         "types": ["vite/client"]
     }
 }

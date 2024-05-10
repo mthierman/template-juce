@@ -6,7 +6,7 @@ const project = resolve("projects/plugins/gain");
 
 const userConfig: UserConfig = {
     plugins: [react()],
-    root: resolve("projects/plugins/gain"),
+    root: project,
     build: {
         outDir: resolve("build/plugins/gain"),
         emptyOutDir: true,

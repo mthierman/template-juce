@@ -1,4 +1,4 @@
-import "gain/css/index.css";
+import "css/index.css";
 
 export default function App() {
     return <></>;
