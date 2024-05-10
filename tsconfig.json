@@ -3,20 +3,13 @@
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "Bundler",
-        "baseUrl": "./",
-        "paths": {
-            "root/*": ["./*"],
-            "gain/*": ["projects/plugins/gain/*"]
-        },
-        "lib": ["ESNext", "DOM", "DOM.Iterable"],
-        "jsx": "react-jsx",
         "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
         "noEmit": true,
         "isolatedModules": true,
         "strict": true,
-        "skipLibCheck": true,
-        "types": ["vite/client"]
+        "skipLibCheck": true
     },
-    "include": ["projects/plugins/gain", "**/*.config.ts"]
+    "references": [{ "path": "projects/plugins/gain" }, { "path": "projects/apps/gui" }],
+    "include": ["**/*.config.ts"]
 }

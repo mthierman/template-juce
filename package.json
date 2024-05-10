@@ -5,11 +5,13 @@
     "type": "module",
     "scripts": {
         "check": "tsc",
-        "dev": "vite",
-        "build": "vite build",
         "lint": "eslint .",
-        "checkbuild": "tsc && vite build",
-        "preview": "vite preview",
+        "apps.gui.dev": "vite --config projects/apps/gui/vite.config.ts",
+        "apps.gui.build": "vite build --config projects/apps/gui/vite.config.ts",
+        "apps.gui.preview": "vite preview --config projects/apps/gui/vite.config.ts",
+        "plugins.gain.dev": "vite --config projects/plugins/gain/vite.config.ts",
+        "plugins.gain.build": "vite build --config projects/plugins/gain/vite.config.ts",
+        "plugins.gain.preview": "vite preview --config projects/plugins/gain/vite.config.ts",
         "cmake": "cmake -S . -B build && cmake --build build"
     },
     "dependencies": {

@@ -1,7 +1,7 @@
-import GainSlider from "gain/components/GainSlider";
-import Logo from "gain/components/Logo";
-import "gain/css/index.css";
-import { applyTheme, loadTheme } from "gain/modules/theme";
+import GainSlider from "components/GainSlider";
+import Logo from "components/Logo";
+import "css/index.css";
+import { applyTheme, loadTheme } from "modules/theme";
 import { useEffect, useState } from "react";
 
 export default function App() {

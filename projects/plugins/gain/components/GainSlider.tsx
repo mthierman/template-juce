@@ -1,4 +1,4 @@
-import InvertPhaseToggle from "gain/components/InvertPhaseToggle";
+import InvertPhaseToggle from "components/InvertPhaseToggle";
 import * as Juce from "juce-framework-frontend";
 import { ChangeEvent, MouseEvent, WheelEvent, useEffect, useRef, useState } from "react";
 

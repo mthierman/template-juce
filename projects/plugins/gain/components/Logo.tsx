@@ -1,4 +1,4 @@
-import { loadLogo } from "gain/modules/theme";
+import { loadLogo } from "modules/theme";
 import { useEffect, useState } from "react";
 
 export default function App() {

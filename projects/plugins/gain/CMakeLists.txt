@@ -85,7 +85,7 @@ juce_add_binary_data(
 
 add_custom_target(
     ${PROJECT_NAME}_Vite
-    COMMAND pnpm run build
+    COMMAND pnpm run plugins.gain.build
     BYPRODUCTS ${VITE_OUTPUT}
 )
 
