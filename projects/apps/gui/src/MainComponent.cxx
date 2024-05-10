@@ -22,7 +22,7 @@ MainComponent::MainComponent()
 
 auto MainComponent::paint(juce::Graphics& graphics) -> void
 {
-    graphics.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
+    graphics.fillAll(juce::Colours::black);
 }
 
 auto MainComponent::resized() -> void { m_browser.setBounds(getLocalBounds()); }

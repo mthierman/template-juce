@@ -17,9 +17,11 @@ struct MainComponent final : public juce::Component
     Browser m_browser{
         juce::WebBrowserComponent::Options{}
             .withBackend(juce::WebBrowserComponent::Options::Backend::webview2)
-            .withWinWebView2Options(
-                juce::WebBrowserComponent::Options::WinWebView2{}.withUserDataFolder(
-                    juce::File::getSpecialLocation(juce::File::SpecialLocationType::tempDirectory)))
+            .withWinWebView2Options(juce::WebBrowserComponent::Options::WinWebView2{}
+                                        .withUserDataFolder(juce::File::getSpecialLocation(
+                                            juce::File::SpecialLocationType::tempDirectory))
+                                        // .withBackgroundColour(juce::Colours::black)
+                                        )
             .withNativeIntegrationEnabled()
             .withResourceProvider([this](const auto& url) { return getResource(url); },
                                   juce::URL{"http://localhost:5173/"}.getOrigin())};
