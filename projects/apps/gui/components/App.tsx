@@ -1,3 +1,4 @@
+import Fetch from "components/Fetch";
 import "css/index.css";
 import { applyTheme, loadTheme } from "modules/theme";
 import { useEffect, useState } from "react";
@@ -23,5 +24,9 @@ export default function App() {
         };
     }, []);
 
-    return <></>;
+    return (
+        <>
+            <Fetch />
+        </>
+    );
 }
