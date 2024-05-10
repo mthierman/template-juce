@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-    content: ["./projects/**/*.{html,js,jsx,ts,tsx}"],
+    content: ["./projects/plugins/gain/**/*.{html,js,jsx,ts,tsx}"],
     darkMode: "selector",
     theme: {
         fontFamily: {
