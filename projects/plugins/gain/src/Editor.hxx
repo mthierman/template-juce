@@ -26,7 +26,7 @@ struct Editor final : public juce::AudioProcessorEditor
             .withNativeIntegrationEnabled()
             .withOptionsFrom(m_gainRelay)
             .withOptionsFrom(m_phaseRelay)
-            .withResourceProvider([this](const auto& url) { return Browser::getResource(url); },
+            .withResourceProvider([this](const auto& url) { return Browser::lookUpResource(url); },
                                   juce::URL{"http://localhost:5173/"}.getOrigin())};
 
     juce::WebSliderParameterAttachment m_gainAttachment{

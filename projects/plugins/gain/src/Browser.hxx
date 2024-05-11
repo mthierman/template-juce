@@ -9,14 +9,14 @@ struct Browser : juce::WebBrowserComponent
     auto pageAboutToLoad(const juce::String& newUrl) -> bool override;
 
     static auto
-    getMimeType(const juce::String& filename,
-                const juce::String& defaultMimeType = "application/octet-stream") -> juce::String;
-
-    static auto
     createResource(const juce::String& resourceName) -> juce::WebBrowserComponent::Resource;
 
+    static auto lookUpMimeType(const juce::String& filename,
+                               const juce::String& defaultMimeType = "application/octet-stream")
+        -> juce::String;
+
     static auto
-    getResource(const juce::String& url) -> std::optional<juce::WebBrowserComponent::Resource>;
+    lookUpResource(const juce::String& url) -> std::optional<juce::WebBrowserComponent::Resource>;
 
     // clang-format off
     static inline std::unordered_map<juce::String, juce::String> s_mimeTypes{
@@ -66,7 +66,7 @@ struct Browser : juce::WebBrowserComponent
     };
     // clang-format on
 
-    static inline std::unordered_map<juce::String, juce::WebBrowserComponent::Resource> m_resources{
+    static inline std::unordered_map<juce::String, juce::WebBrowserComponent::Resource> s_resources{
         {"/index.html", createResource("index_html")},
         {"/index.js", createResource("index_js")},
         {"/index.css", createResource("index_css")},
