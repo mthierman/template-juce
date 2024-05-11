@@ -11,17 +11,8 @@ struct Editor final : public juce::AudioProcessorEditor
     auto paint(juce::Graphics&) -> void override;
     auto resized() -> void override;
 
-    auto getResource(const juce::String& url) -> std::optional<juce::WebBrowserComponent::Resource>;
-
   private:
     Processor& m_processor;
-
-    std::unordered_map<juce::String, juce::WebBrowserComponent::Resource> m_resources{
-        {"/index.html", Browser::createResource("index_html")},
-        {"/index.js", Browser::createResource("index_js")},
-        {"/index.css", Browser::createResource("index_css")},
-        {"/favicon.ico", Browser::createResource("favicon_ico")},
-    };
 
     juce::WebSliderRelay m_gainRelay{m_browser, "gain"};
     juce::WebToggleButtonRelay m_phaseRelay{m_browser, "invertPhase"};
@@ -35,7 +26,7 @@ struct Editor final : public juce::AudioProcessorEditor
             .withNativeIntegrationEnabled()
             .withOptionsFrom(m_gainRelay)
             .withOptionsFrom(m_phaseRelay)
-            .withResourceProvider([this](const auto& url) { return getResource(url); },
+            .withResourceProvider([this](const auto& url) { return Browser::getResource(url); },
                                   juce::URL{"http://localhost:5173/"}.getOrigin())};
 
     juce::WebSliderParameterAttachment m_gainAttachment{

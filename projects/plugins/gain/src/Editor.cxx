@@ -33,19 +33,3 @@ auto Editor::paint(juce::Graphics& graphics) -> void
 }
 
 auto Editor::resized() -> void { m_browser.setBounds(getLocalBounds()); }
-
-auto Editor::getResource(const juce::String& url)
-    -> std::optional<juce::WebBrowserComponent::Resource>
-{
-    const auto requestedUrl{url == "/" ? juce::String{"/index.html"} : url};
-
-    for (const auto& [route, resource] : m_resources)
-    {
-        if (requestedUrl == route)
-        {
-            return resource;
-        }
-    }
-
-    return std::nullopt;
-}

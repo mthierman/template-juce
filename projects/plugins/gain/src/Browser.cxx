@@ -41,3 +41,19 @@ auto Browser::createResource(const juce::String& resourceName)
 
     return resource;
 }
+
+auto Browser::getResource(const juce::String& url)
+    -> std::optional<juce::WebBrowserComponent::Resource>
+{
+    const auto requestedUrl{url == "/" ? juce::String{"/index.html"} : url};
+
+    for (const auto& [route, resource] : m_resources)
+    {
+        if (requestedUrl == route)
+        {
+            return resource;
+        }
+    }
+
+    return std::nullopt;
+}
