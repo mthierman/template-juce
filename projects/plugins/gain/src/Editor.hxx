@@ -5,10 +5,10 @@
 
 struct Editor final : public juce::AudioProcessorEditor
 {
-    explicit Editor(Processor&);
+    explicit Editor(Processor& processor);
     ~Editor() override;
 
-    auto paint(juce::Graphics&) -> void override;
+    auto paint(juce::Graphics& graphics) -> void override;
     auto resized() -> void override;
 
   private:

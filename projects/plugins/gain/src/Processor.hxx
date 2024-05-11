@@ -16,7 +16,8 @@ struct Processor final : public juce::AudioProcessor
 
     auto isBusesLayoutSupported(const BusesLayout& layouts) const -> bool override;
 
-    auto processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) -> void override;
+    auto processBlock(juce::AudioBuffer<float>& buffer,
+                      juce::MidiBuffer& midiMessages) -> void override;
     using AudioProcessor::processBlock;
 
     auto createEditor() -> juce::AudioProcessorEditor* override;
