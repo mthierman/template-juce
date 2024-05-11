@@ -2,7 +2,6 @@
 
 #include "Browser.hxx"
 #include "Processor.hxx"
-#include "Resource.hxx"
 
 struct Editor final : public juce::AudioProcessorEditor
 {
@@ -17,11 +16,11 @@ struct Editor final : public juce::AudioProcessorEditor
   private:
     Processor& m_processor;
 
-    std::unordered_map<juce::String, Resource> m_resources{
-        {"/index.html", Resource("index_html")},
-        {"/index.js", Resource("index_js")},
-        {"/index.css", Resource("index_css")},
-        {"/favicon.ico", Resource("favicon_ico")},
+    std::unordered_map<juce::String, juce::WebBrowserComponent::Resource> m_resources{
+        {"/index.html", Browser::createResource("index_html")},
+        {"/index.js", Browser::createResource("index_js")},
+        {"/index.css", Browser::createResource("index_css")},
+        {"/favicon.ico", Browser::createResource("favicon_ico")},
     };
 
     juce::WebSliderRelay m_gainRelay{m_browser, "gain"};

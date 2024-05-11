@@ -42,7 +42,6 @@ target_sources(
     PRIVATE "src/Browser.cxx"
             "src/Editor.cxx"
             "src/Processor.cxx"
-            "src/Resource.cxx"
 )
 
 target_compile_definitions(
