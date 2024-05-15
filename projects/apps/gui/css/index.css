@@ -17,6 +17,7 @@ ol {
     grid-template-areas: "tracks cover";
     justify-content: space-between;
     /* justify-items: stretch; */
+    align-content: center;
 }
 
 #tracks {
