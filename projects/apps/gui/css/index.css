@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-color: grey;
+    /* background-color: grey; */
     font-family: "system-ui", "ui-sans-serif", "sans-serif";
     height: 100%;
     margin: 0;
@@ -28,7 +28,7 @@ body {
 }
 
 #cover {
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     grid-area: cover;
     display: flex;
     max-height: 100%;
