@@ -12,9 +12,18 @@ body {
 }
 
 ol {
+    /* display: inline-block; */
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style: decimal-leading-zero;
+    list-style-position: inside;
+    white-space: nowrap;
+    /* text-wrap: nowrap; */
+    /* text-overflow: ellipsis; */
+}
+
+li {
+    /* display: inline; */
 }
 
 #root {
@@ -32,8 +41,6 @@ ol {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    /* text-wrap: nowrap; */
-    /* text-overflow: ellipsis; */
 }
 
 #tracklist {

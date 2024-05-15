@@ -19,7 +19,7 @@ export default function App() {
             <div id="tracks">
                 <ol id="tracklist">
                     {tracks.map((track, index) => (
-                        <li className="">{`${index.toString().padStart(2, "0")}. ${track}`}</li>
+                        <li className="">{track}</li>
                     ))}
                 </ol>
             </div>
