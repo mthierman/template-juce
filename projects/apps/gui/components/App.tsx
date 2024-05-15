@@ -37,7 +37,7 @@ export default function App() {
 
     return (
         <>
-            <ol className="bg-yellow-400 p-4 leading-tight">
+            <ol className="overflow-y-auto bg-yellow-400 p-4 leading-tight">
                 {trackList.map((track, index) => (
                     <li className="text-ellipsis text-nowrap">{`${index.toString().padStart(2, "0")}. ${track}`}</li>
                 ))}
