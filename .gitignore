@@ -2,3 +2,4 @@
 build
 CMakeUserPresets.json
 node_modules
+projects/apps/gui/public
