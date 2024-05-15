@@ -27,9 +27,19 @@ body {
     overflow-y: auto;
 }
 
+#cover {
+    background-color: blueviolet;
+    grid-area: cover;
+    display: flex;
+    grid-area: cover;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 4%;
+}
+
 #tracklist {
     background-color: darkgoldenrod;
-    grid-area: tracks;
     list-style: decimal-leading-zero;
     margin: 0;
     padding: 0;
@@ -40,16 +50,6 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-#cover {
-    background-color: blueviolet;
-    display: flex;
-    grid-area: cover;
-    max-height: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    padding: 4%;
 }
 
 #cover-image {
