@@ -11,21 +11,6 @@ body {
     overflow: hidden;
 }
 
-ol {
-    /* display: inline-block; */
-    margin: 0;
-    padding: 0;
-    list-style: decimal-leading-zero;
-    list-style-position: inside;
-    white-space: nowrap;
-    /* text-wrap: nowrap; */
-    /* text-overflow: ellipsis; */
-}
-
-li {
-    /* display: inline; */
-}
-
 #root {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -46,6 +31,18 @@ li {
 #tracklist {
     background-color: darkmagenta;
     margin: auto;
+    /* display: inline-block; */
+    margin: 0;
+    padding: 0;
+    list-style: decimal-leading-zero;
+    list-style-position: inside;
+    white-space: nowrap;
+    /* text-wrap: nowrap; */
+    /* text-overflow: ellipsis; */
+}
+
+.track {
+    /* display: inline; */
 }
 
 #cover {

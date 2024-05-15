@@ -19,7 +19,7 @@ export default function App() {
             <div id="tracks">
                 <ol id="tracklist">
                     {tracks.map((track, index) => (
-                        <li className="">{track}</li>
+                        <li className="track">{track}</li>
                     ))}
                 </ol>
             </div>
