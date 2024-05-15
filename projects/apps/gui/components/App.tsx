@@ -24,13 +24,11 @@ export default function App() {
                 </ol>
             </div>
             <div id="cover">
-                <div id="cover-image-wrapper">
-                    <img
-                        id="cover-image"
-                        src="https://f4.bcbits.com/img/a2157581263_10.jpg"
-                        draggable={false}
-                    />
-                </div>
+                <img
+                    id="cover-image"
+                    src="https://f4.bcbits.com/img/a2157581263_10.jpg"
+                    draggable={false}
+                />
             </div>
         </>
     );
