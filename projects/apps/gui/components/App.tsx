@@ -37,13 +37,13 @@ export default function App() {
 
     return (
         <>
-            <ol className="overflow-y-auto bg-yellow-400 p-4 leading-tight">
+            <ol className="min-w-48 overflow-y-auto overflow-x-hidden bg-yellow-400 p-4 leading-tight">
                 {trackList.map((track, index) => (
-                    <li className="text-ellipsis text-nowrap">{`${index.toString().padStart(2, "0")}. ${track}`}</li>
+                    <li className="">{`${index.toString().padStart(2, "0")}. ${track}`}</li>
                 ))}
             </ol>
             <img
-                className="aspect-square shadow-2xl shadow-black"
+                className="aspect-square shadow-2xl m-auto max-w-96 shadow-black"
                 src="https://f4.bcbits.com/img/a2157581263_10.jpg"
                 draggable={false}
             />
