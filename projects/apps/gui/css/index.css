@@ -22,10 +22,7 @@ body {
 
 #tracklist {
     background-color: darkgoldenrod;
-    display: flex;
-    flex-direction: column;
     grid-area: tracks;
-    list-style-position: inside;
     list-style: decimal-leading-zero;
     margin: 0;
     overflow-x: hidden;
@@ -34,8 +31,10 @@ body {
 }
 
 .track {
+    list-style-position: inside;
+    overflow: hidden;
     text-overflow: ellipsis;
-    /* display: inline; */
+    white-space: nowrap;
 }
 
 #cover {
