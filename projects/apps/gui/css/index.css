@@ -3,12 +3,12 @@ html {
 }
 
 body {
-    font-family: "system-ui", "ui-sans-serif", "sans-serif";
+    background-color: grey;
     margin: 0;
     padding: 0;
-    background-color: grey;
     height: 100%;
     overflow: hidden;
+    font-family: "system-ui", "ui-sans-serif", "sans-serif";
 }
 
 #root {
@@ -16,32 +16,25 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     grid-template-areas: "tracks cover";
-    overflow: hidden;
     height: 100%;
-}
-
-#tracks {
-    background-color: darkgoldenrod;
-    grid-area: tracks;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 #tracklist {
-    background-color: darkmagenta;
-    margin: auto;
-    /* display: inline-block; */
+    background-color: darkgoldenrod;
+    grid-area: tracks;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
     list-style: decimal-leading-zero;
     list-style-position: inside;
-    white-space: nowrap;
-    /* text-wrap: nowrap; */
-    /* text-overflow: ellipsis; */
 }
 
 .track {
+    text-overflow: ellipsis;
     /* display: inline; */
 }
 
