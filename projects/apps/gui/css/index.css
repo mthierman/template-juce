@@ -40,10 +40,6 @@ ol {
     background-color: blueviolet;
     grid-area: cover;
     display: flex;
-    /* align-self: center; */
-    /* justify-self: center; */
-    /* align-content: center; */
-    justify-content: center;
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
