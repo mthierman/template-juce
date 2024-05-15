@@ -29,7 +29,16 @@ ol {
 #tracks {
     background-color: darkgoldenrod;
     grid-area: tracks;
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
+    /* text-wrap: nowrap; */
+    /* text-overflow: ellipsis; */
+}
+
+#tracklist {
+    background-color: darkmagenta;
+    margin: auto;
 }
 
 #cover {
@@ -40,10 +49,6 @@ ol {
     max-height: 100%;
     overflow: hidden;
     padding: 4%;
-}
-
-#tracklist {
-    height: 100%;
 }
 
 #cover-image {
