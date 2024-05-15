@@ -43,6 +43,7 @@ ol {
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
+    padding: 4%;
 }
 
 #tracklist {
@@ -52,8 +53,10 @@ ol {
 #cover-image {
     margin: auto;
     background-color: red;
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 100%;
+    max-height: 100%;
+    /* max-width: 95%; */
+    /* max-height: 95%; */
     object-fit: scale-down;
     box-shadow: 0 0 10px 10px #000;
 }
