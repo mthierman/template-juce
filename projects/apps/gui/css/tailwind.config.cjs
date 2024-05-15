@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
 
-export default {
+module.exports = {
     content: ["./projects/apps/gui/**/*.{html,js,jsx,ts,tsx}"],
     darkMode: "selector",
     theme: {
@@ -8,4 +8,4 @@ export default {
             sans: ["system-ui", "ui-sans-serif", "sans-serif"],
         },
     },
-} satisfies Config;
+};
