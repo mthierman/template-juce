@@ -39,7 +39,10 @@ ol {
 #cover {
     background-color: blueviolet;
     grid-area: cover;
-    position: relative;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    padding: 2%;
 }
 
 #tracklist {
@@ -49,6 +52,6 @@ ol {
 #cover-image {
     width: 100%;
     height: 100%;
-    position: absolute;
     object-fit: scale-down;
+    box-shadow: 0 0 10px 10px #000;
 }
