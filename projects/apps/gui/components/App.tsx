@@ -16,11 +16,13 @@ const tracks = [
 export default function App() {
     return (
         <>
-            <ol id="tracklist">
-                {tracks.map((track, index) => (
-                    <li className="track">{track}</li>
-                ))}
-            </ol>
+            <div id="tracks">
+                <ol id="tracklist">
+                    {tracks.map((track, index) => (
+                        <li className="track">{track}</li>
+                    ))}
+                </ol>
+            </div>
             <div id="cover">
                 <img
                     id="cover-image"
