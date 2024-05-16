@@ -16,11 +16,11 @@ const tracks = [
 
 const colorFromImage = (image: HTMLImageElement) => {
     image.addEventListener("load", () => {
-        console.log(image.src);
-        const ctx = document.createElement("canvas").getContext("2d");
-        ctx.imageSmoothingEnabled = true;
-        ctx.drawImage(image, 0, 0, 4, 4);
-        const i = ctx.getImageData(0, 0, 1, 1).data;
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        context.imageSmoothingEnabled = true;
+        context.drawImage(image, 0, 0, 4, 4);
+        const i = context.getImageData(0, 0, 1, 1).data;
         console.log(i);
 
         const rgba = `rgba(${i[0]},${i[1]},${i[2]},${i[3]})`;
