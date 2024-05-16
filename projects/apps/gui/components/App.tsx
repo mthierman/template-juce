@@ -34,9 +34,9 @@ const useColorFromImage = () => {
 
         color.darken(0.5);
 
-        // const hex = color.toString({ format: "hex" });
+        const hex = color.toString({ format: "hex" });
 
-        document.body.style.backgroundColor = color.toString({ format: "hex" });
+        document.body.style.backgroundColor = hex;
     };
 
     useEffect(() => {
