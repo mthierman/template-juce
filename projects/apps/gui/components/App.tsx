@@ -15,7 +15,7 @@ const tracks = [
 ];
 
 const useColorFromImage = () => {
-    const coverImage = useRef<HTMLImageElement | null>(null);
+    const image = useRef<HTMLImageElement | null>(null);
 
     const colorFromImage = () => {
         const canvas = document.createElement("canvas");
@@ -26,7 +26,7 @@ const useColorFromImage = () => {
         }
 
         context.imageSmoothingEnabled = true;
-        context.drawImage(coverImage.current!, 0, 0, 4, 4);
+        context.drawImage(image.current!, 0, 0, 4, 4);
 
         const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
 
@@ -36,14 +36,14 @@ const useColorFromImage = () => {
     };
 
     useEffect(() => {
-        coverImage.current?.addEventListener("load", colorFromImage);
+        image.current?.addEventListener("load", colorFromImage);
 
         return () => {
-            coverImage.current?.removeEventListener("load", colorFromImage);
+            image.current?.removeEventListener("load", colorFromImage);
         };
     }, []);
 
-    return coverImage;
+    return image;
 };
 
 export default function App() {
