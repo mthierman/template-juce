@@ -15,10 +15,7 @@ const tracks = [
 ];
 
 const colorFromImage = (image: HTMLImageElement) => {
-    // image.addEventListener('load', () => {
-    //     //
-    // })
-    image.onload = () => {
+    image.addEventListener("load", () => {
         console.log(image.src);
         const ctx = document.createElement("canvas").getContext("2d");
         ctx.imageSmoothingEnabled = true;
@@ -30,7 +27,7 @@ const colorFromImage = (image: HTMLImageElement) => {
         const HEX = "#" + ((1 << 24) + (i[0] << 16) + (i[1] << 8) + i[2]).toString(16).slice(1);
 
         document.body.style.backgroundColor = HEX;
-    };
+    });
 };
 
 const colorToRgba = (color: string) => {
