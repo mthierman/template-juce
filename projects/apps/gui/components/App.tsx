@@ -34,24 +34,16 @@ const colorFromImage = (image: HTMLImageElement) => {
     });
 };
 
-const colorToRgba = (color: string) => {
-    const c = new Color(color);
-
-    return {
-        R: Math.round(c.r * 255),
-        G: Math.round(c.g * 255),
-        B: Math.round(c.b * 255),
-        A: c.alpha,
-    };
-};
-
 export default function App() {
     const cover = useRef<HTMLDivElement | null>(null);
     const coverImage = useRef<HTMLImageElement | null>(null);
 
     useEffect(() => {
         const img = coverImage.current;
-        colorFromImage(img);
+
+        if (img) {
+            colorFromImage(img);
+        }
     }, [coverImage.current]);
 
     return (
