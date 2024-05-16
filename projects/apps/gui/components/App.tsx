@@ -18,9 +18,16 @@ const colorFromImage = (image: HTMLImageElement) => {
     image.addEventListener("load", () => {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
+
+        if (!context) {
+            throw new Error("Context is null");
+        }
+
         context.imageSmoothingEnabled = true;
         context.drawImage(image, 0, 0, 4, 4);
+
         const i = context.getImageData(0, 0, 1, 1).data;
+        const [r, g, b, a] = context.getImageData(0, 0, 1, 1).data;
         console.log(i);
 
         const rgba = `rgba(${i[0]},${i[1]},${i[2]},${i[3]})`;

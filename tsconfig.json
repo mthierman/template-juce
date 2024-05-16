@@ -1,15 +1,9 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "Bundler",
-        "allowImportingTsExtensions": true,
-        "resolveJsonModule": true,
-        "noEmit": true,
-        "isolatedModules": true,
-        "strict": true,
-        "skipLibCheck": true
-    },
-    "references": [{ "path": "projects/plugins/gain" }, { "path": "projects/apps/gui" }],
-    "include": ["**/*.config.ts"]
+    "files": [],
+    "include": [],
+    "references": [
+        { "path": "tsconfig.node.json" },
+        { "path": "projects/plugins/gain" },
+        { "path": "projects/apps/gui" }
+    ]
 }
