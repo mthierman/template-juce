@@ -26,14 +26,11 @@ const colorFromImage = (image: HTMLImageElement) => {
         context.imageSmoothingEnabled = true;
         context.drawImage(image, 0, 0, 4, 4);
 
-        const i = context.getImageData(0, 0, 1, 1).data;
         const [r, g, b, a] = context.getImageData(0, 0, 1, 1).data;
-        console.log(i);
 
-        const rgba = `rgba(${i[0]},${i[1]},${i[2]},${i[3]})`;
-        const HEX = "#" + ((1 << 24) + (i[0] << 16) + (i[1] << 8) + i[2]).toString(16).slice(1);
+        const color = new Color(`rgb(${r}, ${g}, ${b})`).toString({ format: "hex" });
 
-        document.body.style.backgroundColor = HEX;
+        document.body.style.backgroundColor = color;
     });
 };
 
