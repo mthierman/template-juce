@@ -39,12 +39,10 @@ export default function App() {
     const coverImage = useRef<HTMLImageElement | null>(null);
 
     useEffect(() => {
-        const img = coverImage.current;
-
-        if (img) {
-            colorFromImage(img);
+        if (coverImage.current) {
+            colorFromImage(coverImage.current);
         }
-    }, [coverImage.current]);
+    }, [coverImage]);
 
     return (
         <>
