@@ -26,7 +26,7 @@ const colorFromImage = (image: HTMLImageElement) => {
         context.imageSmoothingEnabled = true;
         context.drawImage(image, 0, 0, 4, 4);
 
-        const [r, g, b, a] = context.getImageData(0, 0, 1, 1).data;
+        const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
 
         const color = new Color(`rgb(${r}, ${g}, ${b})`).toString({ format: "hex" });
 
