@@ -54,6 +54,12 @@ export default function App() {
     const cover = useRef<HTMLDivElement | null>(null);
     const coverImage = useColorFromImage();
 
+    useEffect(() => {
+        const brainz = () => {
+            fetch("https://musicbrainz.org/ws/2/").then((value) => console.log(value));
+        };
+    }, []);
+
     return (
         <>
             <div id="tracks">
