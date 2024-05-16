@@ -30,9 +30,13 @@ const useColorFromImage = () => {
 
         const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
 
-        const color = new Color(`rgb(${r}, ${g}, ${b})`).toString({ format: "hex" });
+        const color = new Color(`rgb(${r}, ${g}, ${b})`);
 
-        document.body.style.backgroundColor = color;
+        color.darken(0.5);
+
+        // const hex = color.toString({ format: "hex" });
+
+        document.body.style.backgroundColor = color.toString({ format: "hex" });
     };
 
     useEffect(() => {
