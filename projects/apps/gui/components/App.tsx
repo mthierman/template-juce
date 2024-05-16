@@ -14,8 +14,10 @@ const tracks = [
     "Landed",
 ];
 
-const colorFromImage = (image: HTMLImageElement) => {
-    image.addEventListener("load", () => {
+const useColorFromImage = () => {
+    const coverImage = useRef<HTMLImageElement | null>(null);
+
+    const colorFromImage = () => {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
 
@@ -24,25 +26,29 @@ const colorFromImage = (image: HTMLImageElement) => {
         }
 
         context.imageSmoothingEnabled = true;
-        context.drawImage(image, 0, 0, 4, 4);
+        context.drawImage(coverImage.current!, 0, 0, 4, 4);
 
         const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
 
         const color = new Color(`rgb(${r}, ${g}, ${b})`).toString({ format: "hex" });
 
         document.body.style.backgroundColor = color;
-    });
+    };
+
+    useEffect(() => {
+        coverImage.current?.addEventListener("load", colorFromImage);
+
+        return () => {
+            coverImage.current?.removeEventListener("load", colorFromImage);
+        };
+    }, []);
+
+    return coverImage;
 };
 
 export default function App() {
     const cover = useRef<HTMLDivElement | null>(null);
-    const coverImage = useRef<HTMLImageElement | null>(null);
-
-    useEffect(() => {
-        if (coverImage.current) {
-            colorFromImage(coverImage.current);
-        }
-    }, [coverImage]);
+    const coverImage = useColorFromImage();
 
     return (
         <>
