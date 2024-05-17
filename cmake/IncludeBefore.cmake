@@ -2,14 +2,10 @@ set(RESTORE_NUGET
     OFF
 )
 
-cmake_path(
-    SET
-    juce_SOURCE_DIR
+set(FETCHCONTENT_SOURCE_DIR_JUCE
     "$ENV{LIBRARIES}/JUCE/.worktree/juce8"
 )
 
-cmake_path(
-    SET
-    JUCE_WEBVIEW2_PACKAGE_LOCATION
+set(JUCE_WEBVIEW2_PACKAGE_LOCATION
     "$ENV{NUGET}"
 )
