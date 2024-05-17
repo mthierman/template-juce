@@ -27,9 +27,7 @@ if(RESTORE_NUGET)
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
     )
 
-    cmake_path(
-        SET
-        JUCE_WEBVIEW2_PACKAGE_LOCATION
+    set(JUCE_WEBVIEW2_PACKAGE_LOCATION
         "${CMAKE_BINARY_DIR}/_deps/Nuget"
     )
 endif()
