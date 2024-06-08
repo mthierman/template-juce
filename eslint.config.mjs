@@ -1,16 +1,19 @@
 // @ts-check
-
 import eslint from "@eslint/js";
-import react from "eslint-plugin-react";
-// import reactHooks from "eslint-plugin-react-hooks";
-import reactJsxRuntime from "eslint-plugin-react/configs/jsx-runtime.js";
-import reactRecommended from "eslint-plugin-react/configs/recommended.js";
 import globals from "globals";
+import { resolve } from "path";
 import tseslint from "typescript-eslint";
+
+import react from "eslint-plugin-react";
+import reactJsxRuntime from "eslint-plugin-react/configs/jsx-runtime.js";
+import reactRecommended from "eslint-plugin-react/configs/recommended";
+
+// import reactHooks from "eslint-plugin-react-hooks";
 
 export default tseslint.config(
     eslint.configs.recommended,
-    ...tseslint.configs.recommendedTypeChecked,
+    ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
     reactRecommended,
     reactJsxRuntime,
     {
@@ -27,10 +30,9 @@ export default tseslint.config(
         languageOptions: {
             globals: {
                 ...globals.browser,
-                ...globals.serviceworker,
             },
             parserOptions: {
-                project: ["tsconfig.json"],
+                project: ["./tsconfig.vite.json"],
                 tsconfigRootDir: import.meta.dirname,
                 ecmaFeatures: {
                     jsx: true,
@@ -39,19 +41,19 @@ export default tseslint.config(
         },
     },
     {
-        files: ["**/*.config.ts", "**/tools/scripts/*.ts"],
+        files: ["**/*.config.ts"],
         languageOptions: {
             globals: {
                 ...globals.node,
             },
             parserOptions: {
-                project: ["tsconfig.json"],
+                project: ["./tsconfig.node.json"],
                 tsconfigRootDir: import.meta.dirname,
             },
         },
     },
     {
-        files: ["**/*.config.js"],
+        files: ["**/*.config.mjs"],
         languageOptions: {
             globals: {
                 ...globals.node,
