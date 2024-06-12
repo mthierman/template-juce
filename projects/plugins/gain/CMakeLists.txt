@@ -1,7 +1,4 @@
-project(
-    Gain
-    VERSION 0.0.0
-)
+project(Gain VERSION 0.0.0)
 
 juce_add_plugin(
     ${PROJECT_NAME}
@@ -35,14 +32,14 @@ juce_add_plugin(
     FALSE
     NEEDS_WEBVIEW2
     TRUE
-)
+    )
 
 target_sources(
     ${PROJECT_NAME}
     PRIVATE "src/Browser.cxx"
             "src/Editor.cxx"
             "src/Processor.cxx"
-)
+    )
 
 target_compile_definitions(
     ${PROJECT_NAME}
@@ -51,7 +48,7 @@ target_compile_definitions(
            JUCE_USE_CURL=0
            JUCE_VST3_CAN_REPLACE_VST2=0
            $<$<CONFIG:Debug>:HOT_RELOAD=1>
-)
+    )
 
 target_link_libraries(
     ${PROJECT_NAME}
@@ -63,14 +60,14 @@ target_link_libraries(
            juce::juce_recommended_config_flags
            juce::juce_recommended_lto_flags
            juce::juce_recommended_warning_flags
-)
+    )
 
 set(VITE_OUTPUT
     "${CMAKE_BINARY_DIR}/plugins/gain/index.html"
     "${CMAKE_BINARY_DIR}/plugins/gain/index.css"
     "${CMAKE_BINARY_DIR}/plugins/gain/index.js"
     "${CMAKE_BINARY_DIR}/plugins/gain/favicon.ico"
-)
+    )
 
 juce_add_binary_data(
     ${PROJECT_NAME}_BinaryData
@@ -80,15 +77,11 @@ juce_add_binary_data(
     "BinaryData"
     SOURCES
     ${VITE_OUTPUT}
-)
+    )
 
-add_custom_target(
-    ${PROJECT_NAME}_Vite
-    COMMAND pnpm run plugins.gain.build
-    BYPRODUCTS ${VITE_OUTPUT}
-)
+add_custom_target(${PROJECT_NAME}_Vite COMMAND npm run plugins.gain.build BYPRODUCTS ${VITE_OUTPUT})
 
 add_dependencies(
     ${PROJECT_NAME}_BinaryData
     ${PROJECT_NAME}_Vite
-)
+    )
