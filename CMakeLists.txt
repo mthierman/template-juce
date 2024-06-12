@@ -29,7 +29,10 @@ if(NUGET_EXE)
 
     set(JUCE_WEBVIEW2_PACKAGE_LOCATION "${CMAKE_BINARY_DIR}/_deps")
 else()
-    execute_process(COMMAND )
+    status(
+        FATAL_ERROR
+        "Nuget not found. Download from https://dist.nuget.org/win-x86-commandline/latest/nuget.exe and add it to path"
+        )
 endif()
 
 add_subdirectory(projects)
