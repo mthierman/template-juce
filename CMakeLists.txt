@@ -15,24 +15,34 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(juce)
 
-find_program(
-    NUGET_EXE
+FetchContent_Declare(
     nuget
-    NO_CACHE
-    )
+    URL https://www.nuget.org/api/v2/package/Microsoft.Web.WebView2
+    SOURCE_DIR "${CMAKE_BINARY_DIR}/_deps/Microsoft.Web.WebView2"
+)
 
-if(NUGET_EXE)
-    execute_process(
-        COMMAND nuget install -ExcludeVersion -OutputDirectory "${CMAKE_BINARY_DIR}/_deps"
-        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
-        )
+FetchContent_MakeAvailable(nuget)
 
-    set(JUCE_WEBVIEW2_PACKAGE_LOCATION "${CMAKE_BINARY_DIR}/_deps")
-else()
-    status(
-        FATAL_ERROR
-        "Nuget not found. Download from https://dist.nuget.org/win-x86-commandline/latest/nuget.exe and add it to path"
-        )
-endif()
+set(JUCE_WEBVIEW2_PACKAGE_LOCATION "${CMAKE_BINARY_DIR}/_deps")
+
+# find_program(
+#     NUGET_EXE
+#     nuget
+#     NO_CACHE
+#     )
+
+# if(NUGET_EXE)
+#     execute_process(
+#         COMMAND nuget install -ExcludeVersion -OutputDirectory "${CMAKE_BINARY_DIR}/_deps"
+#         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+#         )
+
+#     set(JUCE_WEBVIEW2_PACKAGE_LOCATION "${CMAKE_BINARY_DIR}/_deps")
+# else()
+#     status(
+#         FATAL_ERROR
+#         "Nuget not found. Download from https://dist.nuget.org/win-x86-commandline/latest/nuget.exe and add it to path"
+#         )
+# endif()
 
 add_subdirectory(projects)
